@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ScriptList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Version>2</Version>
+  <Scripts>
+
+    <SyncTable>
+       <TableName>DIC_MyFirstDictionary</TableName>
+       <Description>My First Dictionary</Description>
+       <TypeName>DIC_MyFirstDictionary</TypeName>
+       <CollectionName>DIC_MyFirstDictionaries</CollectionName>
+       <Columns>id,Code,Name,DateStart,DateEnd,RowVersion</Columns>
+       <PrimaryKeys>id</PrimaryKeys>
+       <MustHave>true</MustHave>
+    </SyncTable>
+    <SyncColumn>
+      <TableName>DIC_MyFirstDictionary</TableName>
+      <ColumnName>id</ColumnName>
+      <Description>Identifier</Description>
+      <DataType>System.Int64</DataType>
+      <DbType>bigint</DbType>
+      <Mandatory>true</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>true</ComputeInDataBase>
+      <Identity>true</Identity>
+    </SyncColumn>
+    <SyncColumn>
+      <TableName>DIC_MyFirstDictionary</TableName>
+      <ColumnName>Code</ColumnName>
+      <Description>System code</Description>
+      <DataType>System.String</DataType>
+      <DbType>nvarchar(4)</DbType>
+      <Mandatory>true</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>false</ComputeInDataBase>
+      <Identity>false</Identity>
+      <MaxLength>4</MaxLength>
+      <Unicode>true</Unicode>
+    </SyncColumn>
+    <SyncColumn>
+      <TableName>DIC_MyFirstDictionary</TableName>
+      <ColumnName>Name</ColumnName>
+      <Description>Name</Description>
+      <DataType>System.String</DataType>
+      <DbType>nvarchar(255)</DbType>
+      <Mandatory>true</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>false</ComputeInDataBase>
+      <Identity>false</Identity>
+      <MaxLength>255</MaxLength>
+      <Unicode>true</Unicode>
+    </SyncColumn>
+    <SyncColumn>
+      <TableName>DIC_MyFirstDictionary</TableName>
+      <ColumnName>DateStart</ColumnName>
+      <Description>Date time Start</Description>
+      <DataType>System.DateTime</DataType>
+      <DbType>datetime</DbType>
+      <Mandatory>true</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>false</ComputeInDataBase>
+      <Identity>false</Identity>
+    </SyncColumn>
+    <SyncColumn>
+      <TableName>DIC_MyFirstDictionary</TableName>
+      <ColumnName>DateEnd</ColumnName>
+      <Description>Date time End</Description>
+      <DataType>System.DateTime</DataType>
+      <DbType>datetime</DbType>
+      <Mandatory>false</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>false</ComputeInDataBase>
+      <Identity>false</Identity>
+    </SyncColumn>
+    <SyncColumn>
+      <TableName>DIC_MyFirstDictionary</TableName>
+      <ColumnName>RowVersion</ColumnName>
+      <Description>timestamp</Description>
+      <DataType>System.Data.Linq.Binary</DataType>
+      <DbType>timestamp</DbType>
+      <Mandatory>false</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>true</ComputeInDataBase>
+      <Identity>false</Identity>
+    </SyncColumn>
+
+  </Scripts>
+</ScriptList>

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CanNotLookRecord" xml:space="preserve">
+    <value>Нет прав на просмотр записи</value>
+  </data>
+  <data name="CanNotEditRecord" xml:space="preserve">
+    <value>Нет прав на редактирование записи</value>
+  </data>
+  <data name="NeedApplyFilter" xml:space="preserve">
+    <value>&lt;b&gt;Примените фильтр.&lt;/b&gt;&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="NoData" xml:space="preserve">
+    <value>Нет данных.&lt;br/&gt;&lt;br/&gt;</value>
+  </data>
+  <data name="MultipleSelectMessage" xml:space="preserve">
+    <value>Выбрано записей: {0}</value>
+  </data>
+  <data name="MultipleSelectedFilterHeader" xml:space="preserve">
+    <value>Выбранные записи</value>
+  </data>
+  <data name="MultipleSelectedFilterSelected" xml:space="preserve">
+    <value>Только выбранные</value>
+  </data>
+  <data name="MultipleSelectedFilterNotSelected" xml:space="preserve">
+    <value>Не выбранные</value>
+  </data>
+  <data name="SelectMessage" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="DownloadMessage" xml:space="preserve">
+    <value>Скачать</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Экспорт</value>
+  </data>
+  <data name="messages__Header" xml:space="preserve">
+    <value>Информационные сообщения</value>
+  </data>
+  <data name="FieldMustBeFilled" xml:space="preserve">
+    <value>Необходимо заполнить поле: </value>
+  </data>
+  <data name="Project__Header" xml:space="preserve">
+    <value>SampleDictionaries</value>
+  </data>
+  <data name="ShowHistory" xml:space="preserve">
+    <value>Показать историю</value>
+  </data>
+  <data name="ShowHistoryForRecord" xml:space="preserve">
+    <value>Показать историю по выбранной записи (изменений {0})</value>
+  </data>
+  <data name="HideHistory" xml:space="preserve">
+    <value>Скрыть историю</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Фильтр</value>
+  </data>
+  <data name="CancelFilter" xml:space="preserve">
+    <value>Отменить фильтр</value>
+  </data>
+  <data name="AddRecord" xml:space="preserve">
+    <value>Добавить запись</value>
+  </data>
+  <data name="CanNotDeleteUseInSystem" xml:space="preserve">
+    <value>Невозможно удалить запись, используется в системе</value>
+  </data>
+</root>
