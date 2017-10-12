@@ -32,6 +32,9 @@ namespace SampleDictionaries
     partial void InsertDIC_MyFirstDictionary(DIC_MyFirstDictionary instance);
     partial void UpdateDIC_MyFirstDictionary(DIC_MyFirstDictionary instance);
     partial void DeleteDIC_MyFirstDictionary(DIC_MyFirstDictionary instance);
+    partial void InsertDIC_MySecondDictionary(DIC_MySecondDictionary instance);
+    partial void UpdateDIC_MySecondDictionary(DIC_MySecondDictionary instance);
+    partial void DeleteDIC_MySecondDictionary(DIC_MySecondDictionary instance);
     #endregion
 		
 		public DBDataContext() : 
@@ -71,6 +74,14 @@ namespace SampleDictionaries
 				return this.GetTable<DIC_MyFirstDictionary>();
 			}
 		}
+		
+		public System.Data.Linq.Table<DIC_MySecondDictionary> DIC_MySecondDictionaries
+		{
+			get
+			{
+				return this.GetTable<DIC_MySecondDictionary>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DIC_MyFirstDictionary")]
@@ -90,6 +101,8 @@ namespace SampleDictionaries
 		private System.Nullable<System.DateTime> _DateEnd;
 		
 		private System.Data.Linq.Binary _RowVersion;
+		
+		private EntitySet<DIC_MySecondDictionary> _DIC_MySecondDictionaries_refFirstDictionary;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -111,6 +124,7 @@ namespace SampleDictionaries
 		
 		public DIC_MyFirstDictionary()
 		{
+			this._DIC_MySecondDictionaries_refFirstDictionary = new EntitySet<DIC_MySecondDictionary>(new Action<DIC_MySecondDictionary>(this.attach_DIC_MySecondDictionaries_refFirstDictionary), new Action<DIC_MySecondDictionary>(this.detach_DIC_MySecondDictionaries_refFirstDictionary));
 			OnCreated();
 		}
 		
@@ -230,6 +244,254 @@ namespace SampleDictionaries
 					this._RowVersion = value;
 					this.SendPropertyChanged("RowVersion");
 					this.OnRowVersionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DIC_MyFirstDictionary_DIC_MySecondDictionary_refFirstDictionary", Storage="_DIC_MySecondDictionaries_refFirstDictionary", ThisKey="id", OtherKey="refFirstDictionary")]
+		public EntitySet<DIC_MySecondDictionary> DIC_MySecondDictionaries_refFirstDictionary
+		{
+			get
+			{
+				return this._DIC_MySecondDictionaries_refFirstDictionary;
+			}
+			set
+			{
+				this._DIC_MySecondDictionaries_refFirstDictionary.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_DIC_MySecondDictionaries_refFirstDictionary(DIC_MySecondDictionary entity)
+		{
+			this.SendPropertyChanging();
+			entity.DIC_MyFirstDictionary_refFirstDictionary = this;
+		}
+		
+		private void detach_DIC_MySecondDictionaries_refFirstDictionary(DIC_MySecondDictionary entity)
+		{
+			this.SendPropertyChanging();
+			entity.DIC_MyFirstDictionary_refFirstDictionary = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.DIC_MySecondDictionary")]
+	public partial class DIC_MySecondDictionary : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _id;
+		
+		private string _Name;
+		
+		private long _refFirstDictionary;
+		
+		private System.Nullable<decimal> _DecimalValue;
+		
+		private bool _BoolValue;
+		
+		private System.Data.Linq.Binary _RowVersion;
+		
+		private EntityRef<DIC_MyFirstDictionary> _DIC_MyFirstDictionary_refFirstDictionary;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnidChanging(long value);
+    partial void OnidChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnrefFirstDictionaryChanging(long value);
+    partial void OnrefFirstDictionaryChanged();
+    partial void OnDecimalValueChanging(System.Nullable<decimal> value);
+    partial void OnDecimalValueChanged();
+    partial void OnBoolValueChanging(bool value);
+    partial void OnBoolValueChanged();
+    partial void OnRowVersionChanging(System.Data.Linq.Binary value);
+    partial void OnRowVersionChanged();
+    #endregion
+		
+		public DIC_MySecondDictionary()
+		{
+			this._DIC_MyFirstDictionary_refFirstDictionary = default(EntityRef<DIC_MyFirstDictionary>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="bigint", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this.OnidChanging(value);
+					this.SendPropertyChanging();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="nvarchar(255)", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_refFirstDictionary", DbType="bigint")]
+		public long refFirstDictionary
+		{
+			get
+			{
+				return this._refFirstDictionary;
+			}
+			set
+			{
+				if ((this._refFirstDictionary != value))
+				{
+					if (this._DIC_MyFirstDictionary_refFirstDictionary.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnrefFirstDictionaryChanging(value);
+					this.SendPropertyChanging();
+					this._refFirstDictionary = value;
+					this.SendPropertyChanged("refFirstDictionary");
+					this.OnrefFirstDictionaryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DecimalValue", DbType="decimal(10,2)")]
+		public System.Nullable<decimal> DecimalValue
+		{
+			get
+			{
+				return this._DecimalValue;
+			}
+			set
+			{
+				if ((this._DecimalValue != value))
+				{
+					this.OnDecimalValueChanging(value);
+					this.SendPropertyChanging();
+					this._DecimalValue = value;
+					this.SendPropertyChanged("DecimalValue");
+					this.OnDecimalValueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BoolValue", DbType="bit")]
+		public bool BoolValue
+		{
+			get
+			{
+				return this._BoolValue;
+			}
+			set
+			{
+				if ((this._BoolValue != value))
+				{
+					this.OnBoolValueChanging(value);
+					this.SendPropertyChanging();
+					this._BoolValue = value;
+					this.SendPropertyChanged("BoolValue");
+					this.OnBoolValueChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RowVersion", AutoSync=AutoSync.Always, DbType="timestamp", CanBeNull=true, IsDbGenerated=true)]
+		public System.Data.Linq.Binary RowVersion
+		{
+			get
+			{
+				return this._RowVersion;
+			}
+			set
+			{
+				if ((this._RowVersion != value))
+				{
+					this.OnRowVersionChanging(value);
+					this.SendPropertyChanging();
+					this._RowVersion = value;
+					this.SendPropertyChanged("RowVersion");
+					this.OnRowVersionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="DIC_MyFirstDictionary_DIC_MySecondDictionary_refFirstDictionary", Storage="_DIC_MyFirstDictionary_refFirstDictionary", ThisKey="refFirstDictionary", OtherKey="id", IsForeignKey=true)]
+		public DIC_MyFirstDictionary DIC_MyFirstDictionary_refFirstDictionary
+		{
+			get
+			{
+				return this._DIC_MyFirstDictionary_refFirstDictionary.Entity;
+			}
+			set
+			{
+				DIC_MyFirstDictionary previousValue = this._DIC_MyFirstDictionary_refFirstDictionary.Entity;
+				if (((previousValue != value) 
+							|| (this._DIC_MyFirstDictionary_refFirstDictionary.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._DIC_MyFirstDictionary_refFirstDictionary.Entity = null;
+						previousValue.DIC_MySecondDictionaries_refFirstDictionary.Remove(this);
+					}
+					this._DIC_MyFirstDictionary_refFirstDictionary.Entity = value;
+					if ((value != null))
+					{
+						value.DIC_MySecondDictionaries_refFirstDictionary.Add(this);
+						this._refFirstDictionary = value.id;
+					}
+					else
+					{
+						this._refFirstDictionary = default(long);
+					}
+					this.SendPropertyChanged("DIC_MyFirstDictionary_refFirstDictionary");
 				}
 			}
 		}

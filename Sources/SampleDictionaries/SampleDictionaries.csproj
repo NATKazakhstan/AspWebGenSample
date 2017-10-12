@@ -158,6 +158,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Default2.aspx" />
     <Content Include="EmptyPage.aspx" />
     <Content Include="Ext.NET.Default.aspx" />
     <Content Include="favicon.ico" />
@@ -174,6 +175,9 @@
     <Content Include="MainPage.aspx" />
     <Content Include="SampleDictionaries.sdbml" />
     <Content Include="DB.dbml" />
+    <Content Include="AutoCompleteHandler.ashx" />
+    <Content Include="DataSourceViewHandler.ashx" />
+    <Content Include="LinqToJavaScriptHandler.ashx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -207,6 +211,9 @@
     <Content Include="UserControls\DIC_MyFirstDictionary\DIC_MyFirstDictionaryEdit.ascx" />
     <Content Include="UserControls\DIC_MyFirstDictionary\DIC_MyFirstDictionaryFilter.ascx" />
     <Content Include="UserControls\DIC_MyFirstDictionary\DIC_MyFirstDictionaryJournal.ascx" />
+    <Content Include="UserControls\DIC_MySecondDictionary\DIC_MySecondDictionaryEdit.ascx" />
+    <Content Include="UserControls\DIC_MySecondDictionary\DIC_MySecondDictionaryFilter.ascx" />
+    <Content Include="UserControls\DIC_MySecondDictionary\DIC_MySecondDictionaryJournal.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -296,6 +303,29 @@
       <DependentUpon>DIC_MyFirstDictionaryJournal.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\DIC_MyFirstDictionary\Resources.Designer.cs" />
+    <Compile Include="UserControls\DIC_MySecondDictionary\DIC_MySecondDictionary.cs" />
+    <Compile Include="UserControls\DIC_MySecondDictionary\DIC_MySecondDictionaryEdit.ascx.cs">
+      <DependentUpon>DIC_MySecondDictionaryEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\DIC_MySecondDictionary\DIC_MySecondDictionaryEdit.ascx.designer.cs">
+      <DependentUpon>DIC_MySecondDictionaryEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DIC_MySecondDictionary\DIC_MySecondDictionaryFilter.ascx.cs">
+      <DependentUpon>DIC_MySecondDictionaryFilter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\DIC_MySecondDictionary\DIC_MySecondDictionaryFilter.ascx.designer.cs">
+      <DependentUpon>DIC_MySecondDictionaryFilter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DIC_MySecondDictionary\DIC_MySecondDictionaryJournal.ascx.cs">
+      <DependentUpon>DIC_MySecondDictionaryJournal.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\DIC_MySecondDictionary\DIC_MySecondDictionaryJournal.ascx.designer.cs">
+      <DependentUpon>DIC_MySecondDictionaryJournal.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DIC_MySecondDictionary\Resources.Designer.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -312,6 +342,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="UserControls\DIC_MyFirstDictionary\DIC_MyFirstDictionary.sdbml" />
     <Content Include="IFrameSite.Master" />
+    <Content Include="UserControls\DIC_MySecondDictionary\DIC_MySecondDictionary.sdbml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -328,6 +359,9 @@
     <Content Include="UserControls\DIC_MyFirstDictionary\App_LocalResources\DIC_MyFirstDictionaryJournal.ascx.resx" />
     <EmbeddedResource Include="Properties\TableResources.resx" />
     <EmbeddedResource Include="UserControls\DIC_MyFirstDictionary\Resources.resx" />
+    <Content Include="UserControls\DIC_MySecondDictionary\App_LocalResources\DIC_MySecondDictionaryEdit.ascx.resx" />
+    <Content Include="UserControls\DIC_MySecondDictionary\App_LocalResources\DIC_MySecondDictionaryJournal.ascx.resx" />
+    <EmbeddedResource Include="UserControls\DIC_MySecondDictionary\Resources.resx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\AspWebGen\JS.Linq.Extensions\JS.Linq.Extensions.csproj">

@@ -22,14 +22,14 @@ namespace SampleDictionaries.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class DIC_MyFirstDictionaryResources {
+    public class DIC_MySecondDictionaryResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal DIC_MyFirstDictionaryResources() {
+        internal DIC_MySecondDictionaryResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SampleDictionaries.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SampleDictionaries.UserControls.DIC_MyFirstDictionary.Resources", typeof(DIC_MyFirstDictionaryResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SampleDictionaries.UserControls.DIC_MySecondDictionary.Resources", typeof(DIC_MySecondDictionaryResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -62,7 +62,7 @@ namespace SampleDictionaries.Properties {
 
 
         /// <summary>
-        ///   Looks up a localized string similar to DIC_MyFirstDictionary(My First Dictionary).
+        ///   Looks up a localized string similar to DIC_MySecondDictionary(My Second Dictionary).
         /// </summary>
         public static string Header {
             get {
@@ -152,42 +152,6 @@ namespace SampleDictionaries.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to System code.
-        /// </summary>
-        public static string Code__Header {
-            get {
-                return ResourceManager.GetString("Code__Header", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Code__ShortName {
-            get {
-                return ResourceManager.GetString("Code__ShortName", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Code__GridGroup {
-            get {
-                return ResourceManager.GetString("Code__GridGroup", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string Code__Group {
-            get {
-                return ResourceManager.GetString("Code__Group", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string Name__Header {
@@ -224,74 +188,128 @@ namespace SampleDictionaries.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Date time Start.
+        ///   Looks up a localized string similar to First Dictionary Value.
         /// </summary>
-        public static string DateStart__Header {
+        public static string refFirstDictionary__Header {
             get {
-                return ResourceManager.GetString("DateStart__Header", resourceCulture);
+                return ResourceManager.GetString("refFirstDictionary__Header", resourceCulture);
             }
         }
 
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string DateStart__ShortName {
+        public static string refFirstDictionary__ShortName {
             get {
-                return ResourceManager.GetString("DateStart__ShortName", resourceCulture);
+                return ResourceManager.GetString("refFirstDictionary__ShortName", resourceCulture);
             }
         }
 
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string DateStart__GridGroup {
+        public static string refFirstDictionary__GridGroup {
             get {
-                return ResourceManager.GetString("DateStart__GridGroup", resourceCulture);
+                return ResourceManager.GetString("refFirstDictionary__GridGroup", resourceCulture);
             }
         }
 
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string DateStart__Group {
+        public static string refFirstDictionary__Group {
             get {
-                return ResourceManager.GetString("DateStart__Group", resourceCulture);
+                return ResourceManager.GetString("refFirstDictionary__Group", resourceCulture);
             }
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Date time End.
+        ///   Looks up a localized string similar to Decimal Value.
         /// </summary>
-        public static string DateEnd__Header {
+        public static string DecimalValue__Header {
             get {
-                return ResourceManager.GetString("DateEnd__Header", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string DateEnd__ShortName {
-            get {
-                return ResourceManager.GetString("DateEnd__ShortName", resourceCulture);
+                return ResourceManager.GetString("DecimalValue__Header", resourceCulture);
             }
         }
 
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string DateEnd__GridGroup {
+        public static string DecimalValue__ShortName {
             get {
-                return ResourceManager.GetString("DateEnd__GridGroup", resourceCulture);
+                return ResourceManager.GetString("DecimalValue__ShortName", resourceCulture);
             }
         }
 
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        public static string DateEnd__Group {
+        public static string DecimalValue__GridGroup {
             get {
-                return ResourceManager.GetString("DateEnd__Group", resourceCulture);
+                return ResourceManager.GetString("DecimalValue__GridGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string DecimalValue__Group {
+            get {
+                return ResourceManager.GetString("DecimalValue__Group", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Boolean Value.
+        /// </summary>
+        public static string BoolValue__Header {
+            get {
+                return ResourceManager.GetString("BoolValue__Header", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string BoolValue__ShortName {
+            get {
+                return ResourceManager.GetString("BoolValue__ShortName", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string BoolValue__GridGroup {
+            get {
+                return ResourceManager.GetString("BoolValue__GridGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string BoolValue__Group {
+            get {
+                return ResourceManager.GetString("BoolValue__Group", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Нет.
+        /// </summary>
+        public static string BoolValue__FalseText {
+            get {
+                return ResourceManager.GetString("BoolValue__FalseText", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Да.
+        /// </summary>
+        public static string BoolValue__TrueText {
+            get {
+                return ResourceManager.GetString("BoolValue__TrueText", resourceCulture);
             }
         }
 
@@ -330,42 +348,5 @@ namespace SampleDictionaries.Properties {
                 return ResourceManager.GetString("RowVersion__Group", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to My Second Dictionary.
-        /// </summary>
-        public static string FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionary_ToChildsHeader {
-            get {
-                return ResourceManager.GetString("FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionary_ToChildsHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to My First Dictionary.
-        /// </summary>
-        public static string FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionary_ToParentHeader {
-            get {
-                return ResourceManager.GetString("FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionary_ToParentHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionary_Group {
-            get {
-                return ResourceManager.GetString("FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionary_Group", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionary_FilterGroup {
-            get {
-                return ResourceManager.GetString("FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionary_FilterGroup", resourceCulture);
-            }
-        }
-
     }
 }

@@ -39,8 +39,10 @@ using Nat.Web.Tools.WorkFlow;
 using SampleDictionaries.UserControls;
 using SampleDictionaries.Properties;
 using SampleDictionaries.Security;
-using AccessOptions = SampleDictionaries.DIC_MyFirstDictionaryAccessOptions;
-
+using AccessOptions = SampleDictionaries.DIC_MySecondDictionaryAccessOptions;
+using SampleDictionaries;
+using SampleDictionaries.UserControls;
+using SampleDictionaries.Properties;
 
 using Nat.Web.Tools.ExtNet.Data;
 using Nat.Web.Tools.ExtNet.Extenders;
@@ -48,26 +50,26 @@ using Nat.Web.Tools.ExtNet.ExtNetConfig;
 
 namespace SampleDictionaries
 {
-    #region DIC_MyFirstDictionaryJournalDataSourceView
+    #region DIC_MySecondDictionaryJournalDataSourceView
 
-    public partial class DIC_MyFirstDictionaryJournalDataSourceView : BaseDataSourceView<long, DIC_MyFirstDictionary, DBDataContext, DIC_MyFirstDictionaryJournalDataSourceView.Row>, IDataSourceView2, IDataSourceView3, IHeaderControl, IDataSourceViewExtNet
+    public partial class DIC_MySecondDictionaryJournalDataSourceView : BaseDataSourceView<long, DIC_MySecondDictionary, DBDataContext, DIC_MySecondDictionaryJournalDataSourceView.Row>, IDataSourceView2, IDataSourceView3, IHeaderControl, IDataSourceViewExtNet
     {
         private readonly BaseDataSource<long> owner;
-        private SelectModeDIC_MyFirstDictionary? _select;
-        private DIC_MyFirstDictionaryFilter _filterSelect;
+        private SelectModeDIC_MySecondDictionary? _select;
+        private DIC_MySecondDictionaryFilter _filterSelect;
         private bool? _showHistory;
         private IEnumerable<Row> _cache;
         private MainPageUrlBuilder _url;
 
-        public DIC_MyFirstDictionaryJournalDataSourceView(BaseDataSource<long> owner, string viewName)
+        public DIC_MySecondDictionaryJournalDataSourceView(BaseDataSource<long> owner, string viewName)
             : base(owner, viewName)
         {
             this.owner = owner;
             this.Lookup = new LookupExpressions { GetUrl = () => _url };
         }
 
-        public DIC_MyFirstDictionaryJournalDataSourceView()
-            : base(new DIC_MyFirstDictionaryJournalDataSource(), string.Empty)
+        public DIC_MySecondDictionaryJournalDataSourceView()
+            : base(new DIC_MySecondDictionaryJournalDataSource(), string.Empty)
         {
             this.Lookup = new LookupExpressions { GetUrl = () => _url };
         }
@@ -83,20 +85,20 @@ namespace SampleDictionaries
         
         public LookupExpressions Lookup { get; private set; }
 
-        public SelectModeDIC_MyFirstDictionary SelectMode
+        public SelectModeDIC_MySecondDictionary SelectMode
         {
             get 
             {
                 try
                 {
                     if (_url != null)
-                        _select = (SelectModeDIC_MyFirstDictionary?)Enum.Parse(typeof(SelectModeDIC_MyFirstDictionary), _url.SelectMode, true);
-                    if (owner == null && _select == null) _select = SelectModeDIC_MyFirstDictionary.none;
-                    if (_select == null) _select = (SelectModeDIC_MyFirstDictionary?)Enum.Parse(typeof(SelectModeDIC_MyFirstDictionary), MainPageUrlBuilder.GetSelectMode(owner.Page), true);
+                        _select = (SelectModeDIC_MySecondDictionary?)Enum.Parse(typeof(SelectModeDIC_MySecondDictionary), _url.SelectMode, true);
+                    if (owner == null && _select == null) _select = SelectModeDIC_MySecondDictionary.none;
+                    if (_select == null) _select = (SelectModeDIC_MySecondDictionary?)Enum.Parse(typeof(SelectModeDIC_MySecondDictionary), MainPageUrlBuilder.GetSelectMode(owner.Page), true);
                 }
                 catch
                 {
-                    _select = SelectModeDIC_MyFirstDictionary.none;
+                    _select = SelectModeDIC_MySecondDictionary.none;
                 }
                 
                 return _select.Value;
@@ -110,7 +112,7 @@ namespace SampleDictionaries
 
         public override string TableName
         {
-            get { return "DIC_MyFirstDictionary"; }
+            get { return "DIC_MySecondDictionary"; }
         }
 
         public override bool CanSort
@@ -130,17 +132,17 @@ namespace SampleDictionaries
 
         public string Header
         {
-            get { return DIC_MyFirstDictionaryResources.Header; }
+            get { return DIC_MySecondDictionaryResources.Header; }
         }
 
         public string HeaderRu
         {
-            get { return DIC_MyFirstDictionaryResources.ResourceManager.GetString("Header", new CultureInfo("ru-ru")); }
+            get { return DIC_MySecondDictionaryResources.ResourceManager.GetString("Header", new CultureInfo("ru-ru")); }
         }
 
         public string HeaderKz
         {
-            get { return DIC_MyFirstDictionaryResources.ResourceManager.GetString("Header", new CultureInfo("kk-kz")); }
+            get { return DIC_MySecondDictionaryResources.ResourceManager.GetString("Header", new CultureInfo("kk-kz")); }
         }
 
         partial void InitDefaultSort(ref string sortValue);
@@ -202,17 +204,17 @@ namespace SampleDictionaries
             return list;
         }
 
-        public override string GetStringID(DIC_MyFirstDictionary row)
+        public override string GetStringID(DIC_MySecondDictionary row)
         {
             return GetID(row).ToString();
         }
 
-        public override long? GetID(DIC_MyFirstDictionary row)
+        public override long? GetID(DIC_MySecondDictionary row)
         {
             return row.id;
         }
 
-        public override long? GetIDByRefParent(DIC_MyFirstDictionary row)
+        public override long? GetIDByRefParent(DIC_MySecondDictionary row)
         {
             return null;
         }
@@ -274,7 +276,7 @@ namespace SampleDictionaries
             return GetSelectWithoutFilters(selectColumnName).Where(p => p.Item.id == id);
         }
 
-        public override Expression<Func<DIC_MyFirstDictionary, long, bool>> GetWhereByKey()
+        public override Expression<Func<DIC_MySecondDictionary, long, bool>> GetWhereByKey()
         {
             return (p, id) => p.id == id;
         }
@@ -300,8 +302,8 @@ namespace SampleDictionaries
         {
             DB.ObjectTrackingEnabled = false;
             DB.DeferredLoadingEnabled = false;
-            _filterSelect = new DIC_MyFirstDictionaryFilter();
-            var urlBuilder = new MainPageUrlBuilder("/MainPage.aspx/data/DIC_MyFirstDictionaryJournal/Select?" + queryParameters);
+            _filterSelect = new DIC_MySecondDictionaryFilter();
+            var urlBuilder = new MainPageUrlBuilder("/MainPage.aspx/data/DIC_MySecondDictionaryJournal/Select?" + queryParameters);
             _filterSelect.SetUrl(urlBuilder);
             _filterSelect.SetDB(DB);
             _url = urlBuilder;
@@ -317,8 +319,8 @@ namespace SampleDictionaries
         {
             DB.ObjectTrackingEnabled = false;
             DB.DeferredLoadingEnabled = false;
-            _filterSelect = new DIC_MyFirstDictionaryFilter();
-            var urlBuilder = new MainPageUrlBuilder("/MainPage.aspx/data/DIC_MyFirstDictionaryJournal/Select?" + queryParameters);
+            _filterSelect = new DIC_MySecondDictionaryFilter();
+            var urlBuilder = new MainPageUrlBuilder("/MainPage.aspx/data/DIC_MySecondDictionaryJournal/Select?" + queryParameters);
             _filterSelect.SetUrl(urlBuilder);
             _filterSelect.SetDB(DB);
             _url = urlBuilder;
@@ -334,8 +336,8 @@ namespace SampleDictionaries
         {
             DB.ObjectTrackingEnabled = false;
             DB.DeferredLoadingEnabled = false;
-            _filterSelect = new DIC_MyFirstDictionaryFilter();
-            var url = "/MainPage.aspx/data/DIC_MyFirstDictionaryJournal/Select"
+            _filterSelect = new DIC_MySecondDictionaryFilter();
+            var url = "/MainPage.aspx/data/DIC_MySecondDictionaryJournal/Select"
                       + (!string.IsNullOrEmpty(queryParameters) && queryParameters[0] == '/'
                           ? queryParameters
                           : "?" + queryParameters);
@@ -370,10 +372,11 @@ namespace SampleDictionaries
                         CanEdit = row.CanEdit,
                         CanDelete = row.CanDelete,
                         id = row.Item.id,
-                        Code = row.Item.Code,
                         Name = row.Item.Name,
-                        DateStart = row.Item.DateStart,
-                        DateEnd = row.Item.DateEnd,
+                        refFirstDictionary = row.Item.refFirstDictionary,
+                        refFirstDictionary_Name = row.Lookup.refFirstDictionary_Name,
+                        DecimalValue = row.Item.DecimalValue,
+                        BoolValue = row.Item.BoolValue,
                         RowVersion = row.Item.RowVersion,
                         nameRu = row.nameRu,
                         nameKz = row.nameKz,
@@ -447,25 +450,25 @@ namespace SampleDictionaries
 
         public override BaseFilterControl<long> CreateDefaultFilter(MainPageUrlBuilder urlBuilder)
         {
-            var control = new DIC_MyFirstDictionaryFilter();
-            urlBuilder.UserControl = DIC_MyFirstDictionaryFilter.ConstOfColumnNames.JournalName;
+            var control = new DIC_MySecondDictionaryFilter();
+            urlBuilder.UserControl = DIC_MySecondDictionaryFilter.ConstOfColumnNames.JournalName;
             return control;
         }
 
-        protected override Expression GetFilteredExpression(Expression query, QueryParameters qParams, out BaseFilterControl<long, DIC_MyFirstDictionary, DBDataContext> outFilterControl)
+        protected override Expression GetFilteredExpression(Expression query, QueryParameters qParams, out BaseFilterControl<long, DIC_MySecondDictionary, DBDataContext> outFilterControl)
         {
-            DIC_MyFirstDictionaryFilter filterControl = _filterSelect;
+            DIC_MySecondDictionaryFilter filterControl = _filterSelect;
             if (_filterSelect == null)
             {
                 var args = new DataSourceSelectingEventArgs { DB = DB };
                 if (owner != null) owner.OnSelecting(args);
-                filterControl = (DIC_MyFirstDictionaryFilter)args.FilterControl;
+                filterControl = (DIC_MySecondDictionaryFilter)args.FilterControl;
             }
             if(filterControl == null)
             {
-                var fc = new DIC_MyFirstDictionaryFilter();
+                var fc = new DIC_MySecondDictionaryFilter();
                 filterControl = fc;
-                fc.SetUrl(new MainPageUrlBuilder { SelectMode = "none", UserControl = DIC_MyFirstDictionaryFilter.ConstOfColumnNames.JournalName, });
+                fc.SetUrl(new MainPageUrlBuilder { SelectMode = "none", UserControl = DIC_MySecondDictionaryFilter.ConstOfColumnNames.JournalName, });
                 fc.SetDB(DB);
             }
             if (_showHistory == null)
@@ -478,20 +481,20 @@ namespace SampleDictionaries
             return filterControl.GetFilteredExpression(query, qParams);
         }
 
-        protected IQueryable<DIC_MyFirstDictionary> SetFilter(IQueryable<DIC_MyFirstDictionary> queryable)
+        protected IQueryable<DIC_MySecondDictionary> SetFilter(IQueryable<DIC_MySecondDictionary> queryable)
         {
-            DIC_MyFirstDictionaryFilter filterControl = _filterSelect;
+            DIC_MySecondDictionaryFilter filterControl = _filterSelect;
             if (_filterSelect == null)
             {
                 var args = new DataSourceSelectingEventArgs { DB = DB };
                 owner.OnSelecting(args);
-                filterControl = (DIC_MyFirstDictionaryFilter)args.FilterControl;
+                filterControl = (DIC_MySecondDictionaryFilter)args.FilterControl;
             }
             if (filterControl == null)
             {
-                var fc = new DIC_MyFirstDictionaryFilter();
+                var fc = new DIC_MySecondDictionaryFilter();
                 filterControl = fc;
-                fc.SetUrl(new MainPageUrlBuilder { SelectMode = "none", UserControl = DIC_MyFirstDictionaryFilter.ConstOfColumnNames.JournalName });
+                fc.SetUrl(new MainPageUrlBuilder { SelectMode = "none", UserControl = DIC_MySecondDictionaryFilter.ConstOfColumnNames.JournalName });
                 fc.SetDB(DB);
                 if (!string.IsNullOrEmpty(SelectedRowKey))
                     filterControl.SelectedID = Convert.ToInt64(SelectedRowKey);
@@ -502,7 +505,7 @@ namespace SampleDictionaries
                 filterControl.ShowHistory = _showHistory.Value;
             _selectedID = filterControl.SelectedID;
             _url = filterControl.Url;
-            return (IQueryable<DIC_MyFirstDictionary>)filterControl.SetFilters(queryable);
+            return (IQueryable<DIC_MySecondDictionary>)filterControl.SetFilters(queryable);
         }
 
         public partial class TotalInfo
@@ -518,19 +521,19 @@ namespace SampleDictionaries
             return result;
         }
 
-        partial void ChangeSelect(ref Expression<Func<DIC_MyFirstDictionary, LookupValues, InformationValues>> informationExpression);
-        partial void ChangeSelectDB(ref Expression<Func<DBDataContext, DIC_MyFirstDictionary, LookupValues, InformationValues>> informationExpression);
+        partial void ChangeSelect(ref Expression<Func<DIC_MySecondDictionary, LookupValues, InformationValues>> informationExpression);
+        partial void ChangeSelectDB(ref Expression<Func<DBDataContext, DIC_MySecondDictionary, LookupValues, InformationValues>> informationExpression);
         
-        private static ConstructorInfo rowCtr = typeof(Row).GetConstructor(new [] { typeof(DIC_MyFirstDictionary), typeof(LookupValues), typeof(InformationValues), typeof(string), typeof(string), typeof(bool), typeof(bool), typeof(bool), typeof(Int64) });
-        private static ConstructorInfo lookupCtr = typeof(LookupValues).GetConstructor(new[] { typeof(int), typeof(object[]) });
+        private static ConstructorInfo rowCtr = typeof(Row).GetConstructor(new [] { typeof(DIC_MySecondDictionary), typeof(LookupValues), typeof(InformationValues), typeof(string), typeof(string), typeof(bool), typeof(bool), typeof(bool), typeof(Int64) });
+        private static ConstructorInfo lookupCtr = typeof(LookupValues).GetConstructor(new[] { typeof(string), typeof(object[]) });
         
-        private IQueryable<Row> ChangeSelect(IQueryable<DIC_MyFirstDictionary> query, string selectColumnName)
+        private IQueryable<Row> ChangeSelect(IQueryable<DIC_MySecondDictionary> query, string selectColumnName)
         {
             var isKz = System.Globalization.CultureInfo.CurrentUICulture.Name.Equals("kk-kz", StringComparison.OrdinalIgnoreCase);
             return ChangeSelect(query, selectColumnName, isKz);
         }
         
-        private IQueryable<Row> ChangeSelect(IQueryable<DIC_MyFirstDictionary> query, string selectColumnName, bool isKz)
+        private IQueryable<Row> ChangeSelect(IQueryable<DIC_MySecondDictionary> query, string selectColumnName, bool isKz)
         {
             Expression exp = GetSelectedRowExpression(query.Expression, selectColumnName, isKz, null);
             return query.Provider.CreateQuery<Row>(exp);
@@ -538,14 +541,14 @@ namespace SampleDictionaries
         
         protected override Expression GetSelectedRowExpression(Expression query, string selectColumnName, bool isKz, QueryParameters qParams)
         {
-            WriteTrace("DIC_MyFirstDictionaryJournalDataSourceView.ChangeSelect.Begin");
+            WriteTrace("DIC_MySecondDictionaryJournalDataSourceView.ChangeSelect.Begin");
             if (qParams != null)
                 qParams.SelectColumnName = selectColumnName;
             var showHistory = _showHistory == null || _showHistory.Value;
             var time = DateTime.Now;
             IQueryable<Row> result;
         
-            var param = Expression.Parameter(typeof(DIC_MyFirstDictionary), "c");
+            var param = Expression.Parameter(typeof(DIC_MySecondDictionary), "c");
             Lookup.IsKz = isKz;
             Lookup.DB = DB;
             Lookup.ShowHistory = showHistory;
@@ -555,19 +558,17 @@ namespace SampleDictionaries
                 qParams.AddUniqueParameter("IsKz=" + isKz);
                 qParams.AddUniqueParameter("ShowHistory=" + showHistory);
             }
-            
-            var DIC_MySecondDictionaries_refFirstDictionaryExp = Lookup.GetExpressionFK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionary(param);
             var selectedAdditionalValuesExp = GetSelectedAdditionalValuesExpression(DB, param);
             Expression lookupExp = Expression.New(lookupCtr, 
-                new Expression[] { DIC_MySecondDictionaries_refFirstDictionaryExp, selectedAdditionalValuesExp }, 
-                new MemberInfo[] {typeof(LookupValues).GetMember("CountOfDIC_MySecondDictionaries_refFirstDictionary")[0], typeof(LookupValues).GetMember("SelectedAdditionalValues")[0]});
+                new Expression[] { Lookup.GetExpressionrefFirstDictionary(param),  selectedAdditionalValuesExp }, 
+                new MemberInfo[] {typeof(LookupValues).GetMember("refFirstDictionary_Name")[0],  typeof(LookupValues).GetMember("SelectedAdditionalValues")[0]});
             Expression lookupPred = Expression.Lambda(lookupExp, param);
-            Expression<Func<DIC_MyFirstDictionary, LookupValues, InformationValues>> informationExpression = null;
-            Expression<Func<DBDataContext, DIC_MyFirstDictionary, LookupValues, InformationValues>> informationExpressionDB = null;
+            Expression<Func<DIC_MySecondDictionary, LookupValues, InformationValues>> informationExpression = null;
+            Expression<Func<DBDataContext, DIC_MySecondDictionary, LookupValues, InformationValues>> informationExpressionDB = null;
             ChangeSelect(ref informationExpression);
             ChangeSelectDB(ref informationExpressionDB);
             Expression informationExp;
-            Type selectType = typeof(DIC_MyFirstDictionary);
+            Type selectType = typeof(DIC_MySecondDictionary);
         
             if (informationExpressionDB != null)
                 informationExp = Expression.Invoke(informationExpressionDB, qParams.GetDBExpression(DB), param, lookupExp);
@@ -576,10 +577,10 @@ namespace SampleDictionaries
             else
                 informationExp = Expression.Constant(null, typeof(InformationValues)); 
         
-            Expression<Func<DIC_MyFirstDictionary, string>> nameRuExp;
-            Expression<Func<DIC_MyFirstDictionary, string>> nameKzExp;
+            Expression<Func<DIC_MySecondDictionary, string>> nameRuExp;
+            Expression<Func<DIC_MySecondDictionary, string>> nameKzExp;
             GetNameExpressions(selectColumnName, out nameRuExp, out nameKzExp);
-            Expression<Func<DIC_MyFirstDictionary, Int64>> idKeyExp = p => p.id;
+            Expression<Func<DIC_MySecondDictionary, Int64>> idKeyExp = p => p.id;
             Expression expItem = param;
         
             Expression canEditExp;
@@ -598,13 +599,13 @@ namespace SampleDictionaries
                 new MemberInfo[] { typeof(Row).GetMember("Item")[0], typeof(Row).GetMember("Lookup")[0], typeof(Row).GetMember("Information")[0], typeof(Row).GetMember("nameRu")[0], typeof(Row).GetMember("nameKz")[0], typeof(Row).GetMember("CanEdit")[0], typeof(Row).GetMember("CanDelete")[0], typeof(Row).GetMember("CanAddChild")[0], typeof(Row).GetMember("id")[0] });
             Expression pred = Expression.Lambda(rowExp, param);
             Expression expr = Expression.Call(typeof(Queryable), "Select", new[] { selectType, typeof(Row) }, query, pred);
-            WriteTrace("DIC_MyFirstDictionaryJournalDataSourceView.ChangeSelect.End");
+            WriteTrace("DIC_MySecondDictionaryJournalDataSourceView.ChangeSelect.End");
             return expr;
         }
         
-        partial void GetNameExpressionPartial(string selectColumnName, ref Expression<Func<DIC_MyFirstDictionary, string>> nameRuExp, ref Expression<Func<DIC_MyFirstDictionary, string>> nameKzExp);
+        partial void GetNameExpressionPartial(string selectColumnName, ref Expression<Func<DIC_MySecondDictionary, string>> nameRuExp, ref Expression<Func<DIC_MySecondDictionary, string>> nameKzExp);
         
-        private void GetNameExpressions(string selectColumnName, out Expression<Func<DIC_MyFirstDictionary, string>> nameRuExp, out Expression<Func<DIC_MyFirstDictionary, string>> nameKzExp)
+        private void GetNameExpressions(string selectColumnName, out Expression<Func<DIC_MySecondDictionary, string>> nameRuExp, out Expression<Func<DIC_MySecondDictionary, string>> nameKzExp)
         {
             nameRuExp = nameKzExp = null;
             GetNameExpressionPartial(selectColumnName, ref nameRuExp, ref nameKzExp);
@@ -619,17 +620,18 @@ namespace SampleDictionaries
             {
                 switch(selectColumnName)
                 {
-                    case "Code":
-                        nameKzExp = nameRuExp = r => r.Code.ToString();
-                        break;
                     case "Name":
                         nameKzExp = nameRuExp = r => r.Name.ToString();
                         break;
-                    case "DateStart":
-                        nameKzExp = nameRuExp = r => string.Format("{0:d}", r.DateStart.ToString());
+                    case "refFirstDictionary":
+                        nameRuExp = r => r.DIC_MyFirstDictionary_refFirstDictionary.Name.ToString();
+                        nameKzExp = r => r.DIC_MyFirstDictionary_refFirstDictionary.Name.ToString();
                         break;
-                    case "DateEnd":
-                        nameKzExp = nameRuExp = r => string.Format("{0:d}", r.DateEnd.ToString());
+                    case "DecimalValue":
+                        nameKzExp = nameRuExp = r => r.DecimalValue.ToString();
+                        break;
+                    case "BoolValue":
+                        nameKzExp = nameRuExp = r => r.BoolValue.ToString();
                         break;
                     default:
                         throw new ArgumentException("Не найдена соответствующая колонка", "selectColumnName");
@@ -637,18 +639,18 @@ namespace SampleDictionaries
             }
         }
         
-        
+        private DIC_MyFirstDictionaryJournalDataSource _cachedDIC_MyFirstDictionaryDataSource;
         
         bool _canEditAndDeleteExpressionInitialized = false;
         Expression _canEditAndDeleteExpCache;
         Expression _canEditExpCache;
         Expression _canDeleteExpCache;
-        partial void SetCanEditAndDeleteExpression(BaseFilterEventArgs<DIC_MyFirstDictionary> filterArgs);
-        partial void SetCanEditExpression(BaseFilterEventArgs<DIC_MyFirstDictionary> filterArgs);
-        partial void SetCanDeleteExpression(BaseFilterEventArgs<DIC_MyFirstDictionary> filterArgs);
-        partial void SetCanEditAndDeleteExpression(BaseFilterEventArgs<DIC_MyFirstDictionary, DBDataContext> filterArgs);
-        partial void SetCanEditExpression(BaseFilterEventArgs<DIC_MyFirstDictionary, DBDataContext> filterArgs);
-        partial void SetCanDeleteExpression(BaseFilterEventArgs<DIC_MyFirstDictionary, DBDataContext> filterArgs);
+        partial void SetCanEditAndDeleteExpression(BaseFilterEventArgs<DIC_MySecondDictionary> filterArgs);
+        partial void SetCanEditExpression(BaseFilterEventArgs<DIC_MySecondDictionary> filterArgs);
+        partial void SetCanDeleteExpression(BaseFilterEventArgs<DIC_MySecondDictionary> filterArgs);
+        partial void SetCanEditAndDeleteExpression(BaseFilterEventArgs<DIC_MySecondDictionary, DBDataContext> filterArgs);
+        partial void SetCanEditExpression(BaseFilterEventArgs<DIC_MySecondDictionary, DBDataContext> filterArgs);
+        partial void SetCanDeleteExpression(BaseFilterEventArgs<DIC_MySecondDictionary, DBDataContext> filterArgs);
         
         private void GetEditAndDeleteExpressions(Expression expItem, Expression informationExp, out Expression canEditExp, out Expression canDeleteExp)
         {
@@ -684,48 +686,72 @@ namespace SampleDictionaries
             }
         }
         
-        public override BaseFilterEventArgs<DIC_MyFirstDictionary> GetEditAndDeleteFilter(Type typeOfData)
+        public override BaseFilterEventArgs<DIC_MySecondDictionary> GetEditAndDeleteFilter(Type typeOfData)
         {
             var filterArgs = base.GetEditAndDeleteFilter(typeOfData);
         
             SetCanEditAndDeleteExpression(filterArgs);
-            SetCanEditAndDeleteExpression((BaseFilterEventArgs<DIC_MyFirstDictionary, DBDataContext>)filterArgs);
+            SetCanEditAndDeleteExpression((BaseFilterEventArgs<DIC_MySecondDictionary, DBDataContext>)filterArgs);
             return filterArgs;
         }
         /*
         public override Expression GetEditAndDeleteByParents<T>(Expression source, ParameterExpression param, Expression upToTable, IEnumerable<Expression> fieldsToCheckReference)
         {
-        
+            var refFirstDictionaryControl = _cachedDIC_MyFirstDictionaryDataSource;
+            if (refFirstDictionaryControl == null)
+            {
+                refFirstDictionaryControl = _cachedDIC_MyFirstDictionaryDataSource = new DIC_MyFirstDictionaryJournalDataSource();
+                refFirstDictionaryControl.View.DB = DB;
+            }
+            var refFirstDictionaryToTable = Expression.Property(upToTable, "DIC_MyFirstDictionary_refFirstDictionary");
+            var refFirstDictionaryToCheckReference = new List<Expression>(fieldsToCheckReference);
+            source = refFirstDictionaryControl.View.GetEditAndDeleteExpression<T>(source, refFirstDictionaryToTable, param, refFirstDictionaryToCheckReference);
             return source;
         }*/
         
-        public override BaseFilterEventArgs<DIC_MyFirstDictionary> GetEditFilter(Type typeOfData)
+        public override BaseFilterEventArgs<DIC_MySecondDictionary> GetEditFilter(Type typeOfData)
         {
             var filterArgs = base.GetEditFilter(typeOfData);
         
             SetCanEditExpression(filterArgs);
-            SetCanEditExpression((BaseFilterEventArgs<DIC_MyFirstDictionary, DBDataContext>)filterArgs);
+            SetCanEditExpression((BaseFilterEventArgs<DIC_MySecondDictionary, DBDataContext>)filterArgs);
             return filterArgs;
         }
         /*
         public override Expression GetEditByParents<T>(Expression source, ParameterExpression param, Expression upToTable, IEnumerable<Expression> fieldsToCheckReference)
         {
-        
+            var refFirstDictionaryControl = _cachedDIC_MyFirstDictionaryDataSource;
+            if (refFirstDictionaryControl == null)
+            {
+                refFirstDictionaryControl = _cachedDIC_MyFirstDictionaryDataSource = new DIC_MyFirstDictionaryJournalDataSource();
+                refFirstDictionaryControl.View.DB = DB;
+            }
+            var refFirstDictionaryToTable = Expression.Property(upToTable, "DIC_MyFirstDictionary_refFirstDictionary");
+            var refFirstDictionaryToCheckReference = new List<Expression>(fieldsToCheckReference);
+            source = refFirstDictionaryControl.View.GetEditExpression<T>(source, refFirstDictionaryToTable, param, refFirstDictionaryToCheckReference);
             return source;
         }*/
         
-        public override BaseFilterEventArgs<DIC_MyFirstDictionary> GetDeleteFilter(Type typeOfData)
+        public override BaseFilterEventArgs<DIC_MySecondDictionary> GetDeleteFilter(Type typeOfData)
         {
             var filterArgs = base.GetDeleteFilter(typeOfData);
         
             SetCanDeleteExpression(filterArgs);
-            SetCanDeleteExpression((BaseFilterEventArgs<DIC_MyFirstDictionary, DBDataContext>)filterArgs);
+            SetCanDeleteExpression((BaseFilterEventArgs<DIC_MySecondDictionary, DBDataContext>)filterArgs);
             return filterArgs;
         }
         /*
         public override Expression GetDeleteByParents<T>(Expression source, ParameterExpression param, Expression upToTable, IEnumerable<Expression> fieldsToCheckReference)
         {
-        
+            var refFirstDictionaryControl = _cachedDIC_MyFirstDictionaryDataSource;
+            if (refFirstDictionaryControl == null)
+            {
+                refFirstDictionaryControl = _cachedDIC_MyFirstDictionaryDataSource = new DIC_MyFirstDictionaryJournalDataSource();
+                refFirstDictionaryControl.View.DB = DB;
+            }
+            var refFirstDictionaryToTable = Expression.Property(upToTable, "DIC_MyFirstDictionary_refFirstDictionary");
+            var refFirstDictionaryToCheckReference = new List<Expression>(fieldsToCheckReference);
+            source = refFirstDictionaryControl.View.GetDeleteExpression<T>(source, refFirstDictionaryToTable, param, refFirstDictionaryToCheckReference);
             return source;
         }*/
         
@@ -736,16 +762,25 @@ namespace SampleDictionaries
         {
             if (_parentDataSources != null) return _parentDataSources;
              _parentDataSources = new List<ParentDataSourceViewInfo>();
-        
+            var refFirstDictionaryControl = new DIC_MyFirstDictionaryJournalDataSource();
+            refFirstDictionaryControl.View.DB = DB;
+            _parentDataSources.Add(new ParentDataSourceViewInfo
+                {
+                    DataSource = refFirstDictionaryControl.View,
+                    ReferenceName = "DIC_MyFirstDictionary_refFirstDictionary",
+                    Mandatory = true,
+                    FieldName = "refFirstDictionary",
+                    TableType = typeof(DIC_MyFirstDictionary),
+                });
             InitializeParentCollection(_parentDataSources);
             return _parentDataSources;
         }
         
         Expression _canAddExpCache;
         
-        partial void SetCanAddChildsExpression(BaseFilterEventArgs<DIC_MyFirstDictionary> filterArgs);
+        partial void SetCanAddChildsExpression(BaseFilterEventArgs<DIC_MySecondDictionary> filterArgs);
         
-        protected override BaseFilterEventArgs<DIC_MyFirstDictionary> GetAddRule(Type typeOfData)
+        protected override BaseFilterEventArgs<DIC_MySecondDictionary> GetAddRule(Type typeOfData)
         {
             var filterArgs = base.GetAddRule(typeOfData);
         
@@ -756,27 +791,32 @@ namespace SampleDictionaries
         public override IEnumerable<IQueryable> AllowAddRowGetSources(BaseNavigatorValues valuesT)
         {
             if (InitConnection != null) DB.Transaction = InitTransaction;
-            var values = (DIC_MyFirstDictionaryNavigatorValues)valuesT;
+            var values = (DIC_MySecondDictionaryNavigatorValues)valuesT;
             var sources = new List<IQueryable>();
+            if (values.DIC_MyFirstDictionary.HasValue)
+            {
+                var id = values.DIC_MyFirstDictionary.Value;
+                sources.Add(DB.DIC_MyFirstDictionaries.Where(r => r.id == id));
+            }
             return sources;
         }
         
-        public override IQueryable<DIC_MyFirstDictionary> GetSelectItems(long id)
+        public override IQueryable<DIC_MySecondDictionary> GetSelectItems(long id)
         {
             if (InitConnection != null) DB.Transaction = InitTransaction;
-            return DB.DIC_MyFirstDictionaries.Where(row => row.id == id);
+            return DB.DIC_MySecondDictionaries.Where(row => row.id == id);
         }
         
-        public override IQueryable<DIC_MyFirstDictionary> GetSelectItems()
+        public override IQueryable<DIC_MySecondDictionary> GetSelectItems()
         {
             if (InitConnection != null) DB.Transaction = InitTransaction;
-            return DB.DIC_MyFirstDictionaries;
+            return DB.DIC_MySecondDictionaries;
         }
         
         /*
-        private IQueryable<Row> ChangeSelect(IQueryable<DIC_MyFirstDictionary> query, string selectColumnName)
+        private IQueryable<Row> ChangeSelect(IQueryable<DIC_MySecondDictionary> query, string selectColumnName)
         {
-            WriteTrace("DIC_MyFirstDictionaryJournalDataSourceView.ChangeSelect.Begin");
+            WriteTrace("DIC_MySecondDictionaryJournalDataSourceView.ChangeSelect.Begin");
             var isKz = System.Globalization.CultureInfo.CurrentUICulture.Name.Equals("kk-kz", StringComparison.OrdinalIgnoreCase);
             var time = DateTime.Now;
             IQueryable<Row> result;
@@ -789,7 +829,7 @@ namespace SampleDictionaries
                                    Item = p,
                                    Lookup = new LookupValues
                                                 {
-                                                    CountOfDIC_MySecondDictionaries_refFirstDictionary = p.DIC_MySecondDictionaries_refFirstDictionary.Count(),
+                                                    refFirstDictionary_Name = (isKz ? p.DIC_MyFirstDictionary_refFirstDictionary.Name : p.DIC_MyFirstDictionary_refFirstDictionary.Name).ToString(),
                                                  },
                                    nameRu = p.Name.ToString(),
                                    nameKz = p.Name.ToString(),
@@ -803,7 +843,7 @@ namespace SampleDictionaries
                                    Item = p,
                                    Lookup = new LookupValues
                                                 {
-                                                    CountOfDIC_MySecondDictionaries_refFirstDictionary = p.DIC_MySecondDictionaries_refFirstDictionary.Count(),
+                                                    refFirstDictionary_Name = (isKz ? p.DIC_MyFirstDictionary_refFirstDictionary.Name : p.DIC_MyFirstDictionary_refFirstDictionary.Name).ToString(),
                                                  },
                                    nameRu = p.Name.ToString(),
                                    nameKz = p.Name.ToString(),
@@ -825,19 +865,6 @@ namespace SampleDictionaries
                                nameKz = r.Item.id.ToString(),
                            });
                         break;
-                    case "Code":
-                        result = result.Select(r => 
-                           new Row 
-                           {
-                               id = r.id,
-                               Value = r.Value,
-                               Item = r.Item,
-                               Lookup = r.Lookup,
-                               Information = r.Information,
-                               nameRu = r.Item.Code.ToString(),
-                               nameKz = r.Item.Code.ToString(),
-                           });
-                        break;
                     case "Name":
                         result = result.Select(r => 
                            new Row 
@@ -851,7 +878,7 @@ namespace SampleDictionaries
                                nameKz = r.Item.Name.ToString(),
                            });
                         break;
-                    case "DateStart":
+                    case "refFirstDictionary":
                         result = result.Select(r => 
                            new Row 
                            {
@@ -860,11 +887,11 @@ namespace SampleDictionaries
                                Item = r.Item,
                                Lookup = r.Lookup,
                                Information = r.Information,
-                               nameRu = string.Format("{0:d}", r.Item.DateStart.ToString()),
-                               nameKz = string.Format("{0:d}", r.Item.DateStart.ToString()),
+                               nameRu = r.Item.DIC_MyFirstDictionary_refFirstDictionary.Name.ToString(),
+                               nameKz = r.Item.DIC_MyFirstDictionary_refFirstDictionary.Name.ToString(),
                            });
                         break;
-                    case "DateEnd":
+                    case "DecimalValue":
                         result = result.Select(r => 
                            new Row 
                            {
@@ -873,8 +900,21 @@ namespace SampleDictionaries
                                Item = r.Item,
                                Lookup = r.Lookup,
                                Information = r.Information,
-                               nameRu = string.Format("{0:d}", r.Item.DateEnd.ToString()),
-                               nameKz = string.Format("{0:d}", r.Item.DateEnd.ToString()),
+                               nameRu = r.Item.DecimalValue.ToString(),
+                               nameKz = r.Item.DecimalValue.ToString(),
+                           });
+                        break;
+                    case "BoolValue":
+                        result = result.Select(r => 
+                           new Row 
+                           {
+                               id = r.id,
+                               Value = r.Value,
+                               Item = r.Item,
+                               Lookup = r.Lookup,
+                               Information = r.Information,
+                               nameRu = r.Item.BoolValue.ToString(),
+                               nameKz = r.Item.BoolValue.ToString(),
                            });
                         break;
                     case "RowVersion":
@@ -894,14 +934,14 @@ namespace SampleDictionaries
                         throw new ArgumentException("Не найдена соответствующая колонка", "selectColumnName");
                 }
             }
-            WriteTrace("DIC_MyFirstDictionaryJournalDataSourceView.ChangeSelect.End");
+            WriteTrace("DIC_MySecondDictionaryJournalDataSourceView.ChangeSelect.End");
             return result;
         }*/
 
         public Row GetRecord(long id)
         {
-            WriteTrace("DIC_MyFirstDictionaryJournalDataSourceView.ChangeSelect.Begin");
-            var query = DB.DIC_MyFirstDictionaries.AsQueryable();
+            WriteTrace("DIC_MySecondDictionaryJournalDataSourceView.ChangeSelect.Begin");
+            var query = DB.DIC_MySecondDictionaries.AsQueryable();
             var resQuery = ChangeSelect(query, string.Empty);
             IQueryable<Row> result = null;
             //ChangeSelect(resQuery, ref result, DB);
@@ -910,7 +950,7 @@ namespace SampleDictionaries
                 returnValue = result.FirstOrDefault(p => p.Item.id == id);
             else
                 returnValue = resQuery.FirstOrDefault(p => p.Item.id == id);
-            WriteTrace("DIC_MyFirstDictionaryJournalDataSourceView.ChangeSelect.End");
+            WriteTrace("DIC_MySecondDictionaryJournalDataSourceView.ChangeSelect.End");
             return returnValue;
         }
 
@@ -927,15 +967,7 @@ namespace SampleDictionaries
             InitializeStoreModelPartial(model);
         }
 
-        public long? GetIDBy_Code(System.String value)
-        {
-            return GetSelect().Where(r => r.Item.Code == value).Select(r => (long?)r.Item.id).FirstOrDefault();
-        }
 
-        public IQueryable<Row> SelectBy_Code(System.String value)
-        {
-            return GetSelect().Where(r => r.Item.Code == value);
-        }
 
         public class Row : BaseRow
         {
@@ -943,7 +975,7 @@ namespace SampleDictionaries
             {
             }
         
-            public Row(DIC_MyFirstDictionary item, LookupValues lookup, InformationValues information, string nameRu, string nameKz, bool canEdit, bool canDelete, bool canAddChild, Int64 id)
+            public Row(DIC_MySecondDictionary item, LookupValues lookup, InformationValues information, string nameRu, string nameKz, bool canEdit, bool canDelete, bool canAddChild, Int64 id)
             {
                 Item = item;
                 Lookup = lookup;
@@ -1029,8 +1061,8 @@ namespace SampleDictionaries
             }
         
             [NonSerialized]
-            DIC_MyFirstDictionary _item;
-            public DIC_MyFirstDictionary Item 
+            DIC_MySecondDictionary _item;
+            public DIC_MySecondDictionary Item 
             {
                 get { return _item; }
                 set 
@@ -1072,20 +1104,22 @@ namespace SampleDictionaries
             {
             }
         
-            public LookupValues(int countOfDIC_MySecondDictionaries_refFirstDictionary,
+            public LookupValues(string refFirstDictionary_Name, 
         object[] selectedAdditionalValues)
-            {        
-                CountOfDIC_MySecondDictionaries_refFirstDictionary = countOfDIC_MySecondDictionaries_refFirstDictionary;
+            {
+                this.refFirstDictionary_Name = refFirstDictionary_Name;
+                
                 this.SelectedAdditionalValues = selectedAdditionalValues;
             }
+        
+            public string refFirstDictionary_Name { get; set; }
             
-            public int CountOfDIC_MySecondDictionaries_refFirstDictionary { get; set; }
         
             [NonSerialized]
-            DIC_MyFirstDictionary _item;
+            DIC_MySecondDictionary _item;
         
             [ScriptIgnore]
-            public DIC_MyFirstDictionary Item 
+            public DIC_MySecondDictionary Item 
             {
                 get { return _item; }
                 set { _item = value; }
@@ -1126,10 +1160,10 @@ namespace SampleDictionaries
             }
         
             [NonSerialized]
-            private DIC_MyFirstDictionary _item;
+            private DIC_MySecondDictionary _item;
         
             [ScriptIgnore]
-            public DIC_MyFirstDictionary Item
+            public DIC_MySecondDictionary Item
             {
                 get { return _item; }
                 set 
@@ -1149,13 +1183,15 @@ namespace SampleDictionaries
         
             public System.Int64 id { get; set; }
         
-            public System.String Code { get; set; }
-        
             public System.String Name { get; set; }
         
-            public System.DateTime DateStart { get; set; }
+            public System.Int64 refFirstDictionary { get; set; }
         
-            public System.DateTime? DateEnd { get; set; }
+            public string refFirstDictionary_Name { get; set; }
+        
+            public System.Decimal? DecimalValue { get; set; }
+        
+            public System.Boolean BoolValue { get; set; }
         
             public System.Data.Linq.Binary RowVersion { get; set; }
         }
@@ -1195,32 +1231,26 @@ namespace SampleDictionaries
         
             public DBDataContext DB { get; set; }
             public bool DefaultHidden { get; set; }
+            private bool? _refFirstDictionaryHidden;
         
-        
-            private bool? _FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionaryHidden;
-        
-            public bool FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionaryHidden
+            public bool refFirstDictionaryHidden
             {
-                get { return _FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionaryHidden ?? DefaultHidden; }
-                set { _FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionaryHidden = value; }
+                get { return _refFirstDictionaryHidden ?? DefaultHidden; }
+                set { _refFirstDictionaryHidden = value; }
             }
         
-            public Expression GetExpressionFK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionary(ParameterExpression param)
-            {
-                if (FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionaryHidden)
-                    return NullIntExpression;
+            private static readonly Expression<Func<DIC_MySecondDictionary, string>> ruExpressionrefFirstDictionary = r =>r.DIC_MyFirstDictionary_refFirstDictionary.Name;
+            private static Expression<Func<DIC_MySecondDictionary, string>> kzExpressionrefFirstDictionary = r =>r.DIC_MyFirstDictionary_refFirstDictionary.Name;
         
-        Expression DIC_MySecondDictionaries_refFirstDictionaryChildExp = Expression.Convert(Expression.Property(param, "DIC_MySecondDictionaries_refFirstDictionary"), typeof(IQueryable<DIC_MySecondDictionary>));
-        var DIC_MySecondDictionaries_refFirstDictionaryF = DIC_MySecondDictionaryFilter.CreateDefault(null, DB, showHistory);
-        DIC_MySecondDictionaries_refFirstDictionaryF.UseHistoryFilter = true;
-        DIC_MySecondDictionaries_refFirstDictionaryChildExp = DIC_MySecondDictionaries_refFirstDictionaryF.FilterData(DIC_MySecondDictionaries_refFirstDictionaryChildExp, qParams, false);
-        DIC_MySecondDictionaries_refFirstDictionaryChildExp = Expression.Call(typeof(Queryable), "Count", new[] { typeof(DIC_MySecondDictionary) }, DIC_MySecondDictionaries_refFirstDictionaryChildExp);
-        Expression DIC_MySecondDictionaries_refFirstDictionaryExp = DIC_MySecondDictionaries_refFirstDictionaryChildExp;
-                return DIC_MySecondDictionaries_refFirstDictionaryExp;
-            }
+            public Expression GetExpressionrefFirstDictionary(ParameterExpression param)
+            {
+                if (refFirstDictionaryHidden)
+                    return NullExpression;
+                return Expression.Invoke(isKz ? kzExpressionrefFirstDictionary : ruExpressionrefFirstDictionary, param);
+            }  
         }
 
-        protected static IQueryable<DIC_MyFirstDictionary> SetSortExpression(string sortExpression, IQueryable source)
+        protected static IQueryable<DIC_MySecondDictionary> SetSortExpression(string sortExpression, IQueryable source)
         {
             Expression expression = source.Expression;
             string str = "OrderBy";
@@ -1233,44 +1263,44 @@ namespace SampleDictionaries
                     ascending = split[1].Equals("Asc", StringComparison.OrdinalIgnoreCase);
 
                 string orderByColumn = split[0];
-                ParameterExpression param = Expression.Parameter(typeof(DIC_MyFirstDictionary), "c");
+                ParameterExpression param = Expression.Parameter(typeof(DIC_MySecondDictionary), "c");
                 Type fieldType;
-                var property = LinqFilterGenerator.GetProperty(typeof(DIC_MyFirstDictionary), orderByColumn, param, out fieldType);
+                var property = LinqFilterGenerator.GetProperty(typeof(DIC_MySecondDictionary), orderByColumn, param, out fieldType);
                 expression = Expression.Call(typeof(Queryable), ascending ? str : str2,
-                                             new[] { typeof(DIC_MyFirstDictionary), fieldType },
+                                             new[] { typeof(DIC_MySecondDictionary), fieldType },
                                              expression,
                                              Expression.Lambda(property, param));
                 str = "ThenBy";
                 str2 = "ThenByDescending";
             }
-            return (IQueryable<DIC_MyFirstDictionary>)source.Provider.CreateQuery(expression);
+            return (IQueryable<DIC_MySecondDictionary>)source.Provider.CreateQuery(expression);
         }
     }
 
     #endregion
 
-    #region DIC_MyFirstDictionaryJournalDataSource
+    #region DIC_MySecondDictionaryJournalDataSource
 
-    public class DIC_MyFirstDictionaryJournalDataSource : BaseDataSource<long, DIC_MyFirstDictionary, DBDataContext, DIC_MyFirstDictionaryJournalDataSourceView.Row>, IDataSource
+    public class DIC_MySecondDictionaryJournalDataSource : BaseDataSource<long, DIC_MySecondDictionary, DBDataContext, DIC_MySecondDictionaryJournalDataSourceView.Row>, IDataSource
     {
-        private DIC_MyFirstDictionaryJournalDataSourceView view;
+        private DIC_MySecondDictionaryJournalDataSourceView view;
 
-        public DIC_MyFirstDictionaryJournalDataSourceView View
+        public DIC_MySecondDictionaryJournalDataSourceView View
         {
             get
             {
                 if(view == null)
-                    view = new DIC_MyFirstDictionaryJournalDataSourceView(this, "default");
+                    view = new DIC_MySecondDictionaryJournalDataSourceView(this, "default");
                 return view;
             }
         }
 
-        public override BaseDataSourceView<long, DIC_MyFirstDictionary, DBDataContext, DIC_MyFirstDictionaryJournalDataSourceView.Row> BaseView2
+        public override BaseDataSourceView<long, DIC_MySecondDictionary, DBDataContext, DIC_MySecondDictionaryJournalDataSourceView.Row> BaseView2
         {
             get { return View; }
         }
 
-        public DIC_MyFirstDictionaryJournalDataSourceView.Row GetRecord(long id)
+        public DIC_MySecondDictionaryJournalDataSourceView.Row GetRecord(long id)
         {
             return View.GetRecord(id);
         }
@@ -1286,7 +1316,7 @@ namespace SampleDictionaries
 
     #region AccessOptions
 
-    public static partial class DIC_MyFirstDictionaryAccessOptions
+    public static partial class DIC_MySecondDictionaryAccessOptions
     {
         /// <summary>
         /// Изменение проверки прав, 
@@ -1351,9 +1381,9 @@ namespace SampleDictionaries
 
     #endregion
 
-    #region DIC_MyFirstDictionaryItemNavigatorsInitializer
+    #region DIC_MySecondDictionaryItemNavigatorsInitializer
 
-    public partial class DIC_MyFirstDictionaryItemNavigatorsInitializer
+    public partial class DIC_MySecondDictionaryItemNavigatorsInitializer
     {
         protected MainPageUrlBuilder Url { get; set; }
 
@@ -1376,7 +1406,7 @@ namespace SampleDictionaries
 
         public static void InitializeDic(IDictionary<Type, SelectedParameterNavigator.ItemNavigator> itemNavigators, MainPageUrlBuilder url)
         {
-            var item = new DIC_MyFirstDictionaryItemNavigatorsInitializer();
+            var item = new DIC_MySecondDictionaryItemNavigatorsInitializer();
             item.Url = url;
             item.Initialize(itemNavigators);
             var i = item as IItemNavigatorsInitializer;
@@ -1399,18 +1429,12 @@ namespace SampleDictionaries
         using JS.LinqToJavaScript.Attributes;
     
         [SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1121:UseBuiltInTypeAlias", Justification = "Reviewed. Suppression is OK here.")]
-        [JavaScriptClass(ClassName = "DIC_MyFirstDictionaryActivityController", Namespace = "SampleDictionaries", BaseClassName = "JS.Web.ActivityController")]
-        internal partial class DIC_MyFirstDictionaryActivityController : ActivityController
+        [JavaScriptClass(ClassName = "DIC_MySecondDictionaryActivityController", Namespace = "SampleDictionaries", BaseClassName = "JS.Web.ActivityController")]
+        internal partial class DIC_MySecondDictionaryActivityController : ActivityController
         {
             List<string> _activityControls;
             
-            DIC_MyFirstDictionaryEdit.ControlInfo Info { get; set; }
-            
-            /// <summary>
-            /// System code.
-            /// </summary>
-            [JavaScriptProperty]
-            public ActivityControlCode CodeControl { get; set; }
+            DIC_MySecondDictionaryEdit.ControlInfo Info { get; set; }
             
             /// <summary>
             /// Name.
@@ -1419,16 +1443,22 @@ namespace SampleDictionaries
             public ActivityControlName NameControl { get; set; }
             
             /// <summary>
-            /// Date time Start.
+            /// First Dictionary Value.
             /// </summary>
             [JavaScriptProperty]
-            public ActivityControlDateStart DateStartControl { get; set; }
+            public ActivityControlrefFirstDictionary refFirstDictionaryControl { get; set; }
             
             /// <summary>
-            /// Date time End.
+            /// Decimal Value.
             /// </summary>
             [JavaScriptProperty]
-            public ActivityControlDateEnd DateEndControl { get; set; }
+            public ActivityControlDecimalValue DecimalValueControl { get; set; }
+            
+            /// <summary>
+            /// Boolean Value.
+            /// </summary>
+            [JavaScriptProperty]
+            public ActivityControlBoolValue BoolValueControl { get; set; }
             
             
             
@@ -1444,7 +1474,7 @@ namespace SampleDictionaries
             partial void InitializeActivity();
             partial void InitializeActivityControls(List<string> activityControls);
     
-            public void Initialize(Control form, Dictionary<string, object> values, DIC_MyFirstDictionaryEdit.ControlInfo info)
+            public void Initialize(Control form, Dictionary<string, object> values, DIC_MySecondDictionaryEdit.ControlInfo info)
             {
                 Info = info;
                 ReadOnly = info.IsRead;
@@ -1452,40 +1482,6 @@ namespace SampleDictionaries
                 Control control;
                 string controlID;
                 string clientID;
-                control = info.CodeControl;
-                controlID = control == null ? null : control.ID;
-                clientID = control == null ? null : control.ClientID;
-                CodeControl = new ActivityControlCode(this, "Code", controlID);
-                CodeControl.ClientID = clientID;
-                CodeControl.Control = info.CodeControl;
-                CodeControl.ReadOnlyChanged += (sender, args) =>
-                    {
-                        if (info.CodeControl != null)
-                            info.CodeControl.ReadOnly = args.Value;
-                    };
-                CodeControl.DefaultAllowRequiredValidate = true;
-                CodeControl.AllowRequiredValidateChanged += Nat.Web.Controls.ExtNet.Generation.ActivityControlExtensions.AllowRequiredValidateChanged(info.CodeControl);
-                CodeControl.DefaultReadOnly = false;
-                CodeControl.VisibleChanged += (sender, args) =>
-                    {
-                        if (info.CodeControl != null)
-                        {
-                            info.CodeControl.Hidden = !args.Value;
-                            AbstractContainerExtender.SetHiddenControlContainer(info.CodeControl);
-                        }
-                    };
-                CodeControl.EnabledChanged += (sender, args) =>
-                    {
-                        if (info.CodeControl != null)
-                            info.CodeControl.Disabled = !args.Value;
-                    };
-                CodeControl.AllowValidateChanged += delegate(object sender, ActivityChangedEventArgs args)
-                    {
-                        if (info.CodeControl != null)
-                            SetEnabledToValidators(form.Page, ValidationGroup, info.CodeControl.ID, args.Value);
-                    };
-                CodeControl.GetControlValueHandler = () => info.Code;
-            
                 control = info.NameControl;
                 controlID = control == null ? null : control.ID;
                 clientID = control == null ? null : control.ClientID;
@@ -1520,79 +1516,113 @@ namespace SampleDictionaries
                     };
                 NameControl.GetControlValueHandler = () => info.Name;
             
-                control = info.DateStartControl;
+                control = info.refFirstDictionaryControl;
                 controlID = control == null ? null : control.ID;
                 clientID = control == null ? null : control.ClientID;
-                DateStartControl = new ActivityControlDateStart(this, "DateStart", controlID);
-                DateStartControl.ClientID = clientID;
-                DateStartControl.Control = info.DateStartControl;
-                DateStartControl.ReadOnlyChanged += (sender, args) =>
+                refFirstDictionaryControl = new ActivityControlrefFirstDictionary(this, "refFirstDictionary", controlID);
+                refFirstDictionaryControl.ClientID = clientID;
+                refFirstDictionaryControl.Control = info.refFirstDictionaryControl;
+                refFirstDictionaryControl.ReadOnlyChanged += (sender, args) =>
                     {
-                        if (info.DateStartControl != null)
-                            info.DateStartControl.ReadOnly = args.Value;
+                        if (info.refFirstDictionaryControl != null)
+                            info.refFirstDictionaryControl.ReadOnly = args.Value;
                     };
-                DateStartControl.DefaultAllowRequiredValidate = true;
-                DateStartControl.AllowRequiredValidateChanged += Nat.Web.Controls.ExtNet.Generation.ActivityControlExtensions.AllowRequiredValidateChanged(info.DateStartControl);
-                DateStartControl.DefaultReadOnly = false;
-                DateStartControl.VisibleChanged += (sender, args) =>
+                refFirstDictionaryControl.DefaultAllowRequiredValidate = true;
+                refFirstDictionaryControl.AllowRequiredValidateChanged += Nat.Web.Controls.ExtNet.Generation.ActivityControlExtensions.AllowRequiredValidateChanged(info.refFirstDictionaryControl);
+                refFirstDictionaryControl.DefaultReadOnly = false;
+                refFirstDictionaryControl.VisibleChanged += (sender, args) =>
                     {
-                        if (info.DateStartControl != null)
+                        if (info.refFirstDictionaryControl != null)
                         {
-                            info.DateStartControl.Hidden = !args.Value;
-                            AbstractContainerExtender.SetHiddenControlContainer(info.DateStartControl);
+                            info.refFirstDictionaryControl.Hidden = !args.Value;
+                            AbstractContainerExtender.SetHiddenControlContainer(info.refFirstDictionaryControl);
                         }
                     };
-                DateStartControl.EnabledChanged += (sender, args) =>
+                refFirstDictionaryControl.EnabledChanged += (sender, args) =>
                     {
-                        if (info.DateStartControl != null)
-                            info.DateStartControl.Disabled = !args.Value;
+                        if (info.refFirstDictionaryControl != null)
+                            info.refFirstDictionaryControl.Disabled = !args.Value;
                     };
-                DateStartControl.AllowValidateChanged += delegate(object sender, ActivityChangedEventArgs args)
+                refFirstDictionaryControl.AllowValidateChanged += delegate(object sender, ActivityChangedEventArgs args)
                     {
-                        if (info.DateStartControl != null)
-                            SetEnabledToValidators(form.Page, ValidationGroup, info.DateStartControl.ID, args.Value);
+                        if (info.refFirstDictionaryControl != null)
+                            SetEnabledToValidators(form.Page, ValidationGroup, info.refFirstDictionaryControl.ID, args.Value);
                     };
-                DateStartControl.GetControlValueHandler = () => info.DateStart;
+                refFirstDictionaryControl.GetControlValueHandler = () => info.refFirstDictionary;
             
-                control = info.DateEndControl;
+                control = info.DecimalValueControl;
                 controlID = control == null ? null : control.ID;
                 clientID = control == null ? null : control.ClientID;
-                DateEndControl = new ActivityControlDateEnd(this, "DateEnd", controlID);
-                DateEndControl.ClientID = clientID;
-                DateEndControl.Control = info.DateEndControl;
-                DateEndControl.ReadOnlyChanged += (sender, args) =>
+                DecimalValueControl = new ActivityControlDecimalValue(this, "DecimalValue", controlID);
+                DecimalValueControl.ClientID = clientID;
+                DecimalValueControl.Control = info.DecimalValueControl;
+                DecimalValueControl.ReadOnlyChanged += (sender, args) =>
                     {
-                        if (info.DateEndControl != null)
-                            info.DateEndControl.ReadOnly = args.Value;
+                        if (info.DecimalValueControl != null)
+                            info.DecimalValueControl.ReadOnly = args.Value;
                     };
-                DateEndControl.DefaultAllowRequiredValidate = false;
-                DateEndControl.AllowRequiredValidateChanged += Nat.Web.Controls.ExtNet.Generation.ActivityControlExtensions.AllowRequiredValidateChanged(info.DateEndControl);
-                DateEndControl.DefaultReadOnly = false;
-                DateEndControl.VisibleChanged += (sender, args) =>
+                DecimalValueControl.DefaultAllowRequiredValidate = false;
+                DecimalValueControl.AllowRequiredValidateChanged += Nat.Web.Controls.ExtNet.Generation.ActivityControlExtensions.AllowRequiredValidateChanged(info.DecimalValueControl);
+                DecimalValueControl.DefaultReadOnly = false;
+                DecimalValueControl.VisibleChanged += (sender, args) =>
                     {
-                        if (info.DateEndControl != null)
+                        if (info.DecimalValueControl != null)
                         {
-                            info.DateEndControl.Hidden = !args.Value;
-                            AbstractContainerExtender.SetHiddenControlContainer(info.DateEndControl);
+                            info.DecimalValueControl.Hidden = !args.Value;
+                            AbstractContainerExtender.SetHiddenControlContainer(info.DecimalValueControl);
                         }
                     };
-                DateEndControl.EnabledChanged += (sender, args) =>
+                DecimalValueControl.EnabledChanged += (sender, args) =>
                     {
-                        if (info.DateEndControl != null)
-                            info.DateEndControl.Disabled = !args.Value;
+                        if (info.DecimalValueControl != null)
+                            info.DecimalValueControl.Disabled = !args.Value;
                     };
-                DateEndControl.AllowValidateChanged += delegate(object sender, ActivityChangedEventArgs args)
+                DecimalValueControl.AllowValidateChanged += delegate(object sender, ActivityChangedEventArgs args)
                     {
-                        if (info.DateEndControl != null)
-                            SetEnabledToValidators(form.Page, ValidationGroup, info.DateEndControl.ID, args.Value);
+                        if (info.DecimalValueControl != null)
+                            SetEnabledToValidators(form.Page, ValidationGroup, info.DecimalValueControl.ID, args.Value);
                     };
-                DateEndControl.GetControlValueHandler = () => info.DateEnd;
+                DecimalValueControl.GetControlValueHandler = () => info.DecimalValue;
+            
+                control = info.BoolValueControl;
+                controlID = control == null ? null : control.ID;
+                clientID = control == null ? null : control.ClientID;
+                BoolValueControl = new ActivityControlBoolValue(this, "BoolValue", controlID);
+                BoolValueControl.ClientID = clientID;
+                BoolValueControl.Control = info.BoolValueControl;
+                BoolValueControl.ReadOnlyChanged += (sender, args) =>
+                    {
+                        if (info.BoolValueControl != null)
+                            info.BoolValueControl.ReadOnly = args.Value;
+                    };
+                BoolValueControl.DefaultAllowRequiredValidate = true;
+                BoolValueControl.AllowRequiredValidateChanged += Nat.Web.Controls.ExtNet.Generation.ActivityControlExtensions.AllowRequiredValidateChanged(info.BoolValueControl);
+                BoolValueControl.DefaultReadOnly = false;
+                BoolValueControl.VisibleChanged += (sender, args) =>
+                    {
+                        if (info.BoolValueControl != null)
+                        {
+                            info.BoolValueControl.Hidden = !args.Value;
+                            AbstractContainerExtender.SetHiddenControlContainer(info.BoolValueControl);
+                        }
+                    };
+                BoolValueControl.EnabledChanged += (sender, args) =>
+                    {
+                        if (info.BoolValueControl != null)
+                            info.BoolValueControl.Disabled = !args.Value;
+                    };
+                BoolValueControl.AllowValidateChanged += delegate(object sender, ActivityChangedEventArgs args)
+                    {
+                        if (info.BoolValueControl != null)
+                            SetEnabledToValidators(form.Page, ValidationGroup, info.BoolValueControl.ID, args.Value);
+                    };
+                BoolValueControl.GetControlValueHandler = () => info.BoolValue;
             
                 InitializeControls(
-                    CodeControl,
                     NameControl,
-                    DateStartControl,
-                    DateEndControl);
+                    refFirstDictionaryControl,
+                    DecimalValueControl,
+                    BoolValueControl);
             
                 Initialize(form, values);
                 FormID = Info.FormControl.ClientID;
@@ -1604,10 +1634,10 @@ namespace SampleDictionaries
             {
                 if (form == null)
                 {
-                    CodeControl = new ActivityControlCode(this, "Code", null);
                     NameControl = new ActivityControlName(this, "Name", null);
-                    DateStartControl = new ActivityControlDateStart(this, "DateStart", null);
-                    DateEndControl = new ActivityControlDateEnd(this, "DateEnd", null);
+                    refFirstDictionaryControl = new ActivityControlrefFirstDictionary(this, "refFirstDictionary", null);
+                    DecimalValueControl = new ActivityControlDecimalValue(this, "DecimalValue", null);
+                    BoolValueControl = new ActivityControlBoolValue(this, "BoolValue", null);
             
                     InitializeActivity();
                 }
@@ -1621,10 +1651,10 @@ namespace SampleDictionaries
             
                 _activityControls = new List<string>
                     {
-                        "codeControl",
                         "nameControl",
-                        "dateStartControl",
-                        "dateEndControl",
+                        "refFirstDictionaryControl",
+                        "decimalValueControl",
+                        "boolValueControl",
                     };
                 InitializeActivityControls(_activityControls);
             }
@@ -1632,48 +1662,48 @@ namespace SampleDictionaries
             
             
             /// <summary>
-            /// System code.
-            /// </summary>
-            [JavaScriptClass(ClassName = "DIC_MyFirstDictionaryActivityController_ActivityControlCode", Namespace = "SampleDictionaries", BaseClassName = "JS.Web.ActivityController")]
-            public class ActivityControlCode : ActivityControlClassValue<DIC_MyFirstDictionaryActivityController, String>
-            {
-                public ActivityControlCode(DIC_MyFirstDictionaryActivityController activityController, string controlID, string controlName)
-                    : base(activityController, controlID, controlName)
-                {
-                }
-            }
-            
-            /// <summary>
             /// Name.
             /// </summary>
-            [JavaScriptClass(ClassName = "DIC_MyFirstDictionaryActivityController_ActivityControlName", Namespace = "SampleDictionaries", BaseClassName = "JS.Web.ActivityController")]
-            public class ActivityControlName : ActivityControlClassValue<DIC_MyFirstDictionaryActivityController, String>
+            [JavaScriptClass(ClassName = "DIC_MySecondDictionaryActivityController_ActivityControlName", Namespace = "SampleDictionaries", BaseClassName = "JS.Web.ActivityController")]
+            public class ActivityControlName : ActivityControlClassValue<DIC_MySecondDictionaryActivityController, String>
             {
-                public ActivityControlName(DIC_MyFirstDictionaryActivityController activityController, string controlID, string controlName)
+                public ActivityControlName(DIC_MySecondDictionaryActivityController activityController, string controlID, string controlName)
                     : base(activityController, controlID, controlName)
                 {
                 }
             }
             
             /// <summary>
-            /// Date time Start.
+            /// First Dictionary Value.
             /// </summary>
-            [JavaScriptClass(ClassName = "DIC_MyFirstDictionaryActivityController_ActivityControlDateStart", Namespace = "SampleDictionaries", BaseClassName = "JS.Web.ActivityController")]
-            public class ActivityControlDateStart : ActivityControl<DIC_MyFirstDictionaryActivityController, DateTime>
+            [JavaScriptClass(ClassName = "DIC_MySecondDictionaryActivityController_ActivityControlrefFirstDictionary", Namespace = "SampleDictionaries", BaseClassName = "JS.Web.ActivityController")]
+            public class ActivityControlrefFirstDictionary : ActivityControl<DIC_MySecondDictionaryActivityController, Int64>
             {
-                public ActivityControlDateStart(DIC_MyFirstDictionaryActivityController activityController, string controlID, string controlName)
+                public ActivityControlrefFirstDictionary(DIC_MySecondDictionaryActivityController activityController, string controlID, string controlName)
                     : base(activityController, controlID, controlName)
                 {
                 }
             }
             
             /// <summary>
-            /// Date time End.
+            /// Decimal Value.
             /// </summary>
-            [JavaScriptClass(ClassName = "DIC_MyFirstDictionaryActivityController_ActivityControlDateEnd", Namespace = "SampleDictionaries", BaseClassName = "JS.Web.ActivityController")]
-            public class ActivityControlDateEnd : ActivityControl<DIC_MyFirstDictionaryActivityController, DateTime>
+            [JavaScriptClass(ClassName = "DIC_MySecondDictionaryActivityController_ActivityControlDecimalValue", Namespace = "SampleDictionaries", BaseClassName = "JS.Web.ActivityController")]
+            public class ActivityControlDecimalValue : ActivityControl<DIC_MySecondDictionaryActivityController, Decimal>
             {
-                public ActivityControlDateEnd(DIC_MyFirstDictionaryActivityController activityController, string controlID, string controlName)
+                public ActivityControlDecimalValue(DIC_MySecondDictionaryActivityController activityController, string controlID, string controlName)
+                    : base(activityController, controlID, controlName)
+                {
+                }
+            }
+            
+            /// <summary>
+            /// Boolean Value.
+            /// </summary>
+            [JavaScriptClass(ClassName = "DIC_MySecondDictionaryActivityController_ActivityControlBoolValue", Namespace = "SampleDictionaries", BaseClassName = "JS.Web.ActivityController")]
+            public class ActivityControlBoolValue : ActivityControl<DIC_MySecondDictionaryActivityController, Boolean>
+            {
+                public ActivityControlBoolValue(DIC_MySecondDictionaryActivityController activityController, string controlID, string controlName)
                     : base(activityController, controlID, controlName)
                 {
                 }
@@ -1688,32 +1718,18 @@ namespace SampleDictionaries
     namespace UserControls
     {
         [SuppressMessage("StyleCop.CSharp.NamingRules", "SA1306:FieldNamesMustBeginWithLowerCaseLetter", Justification = "Reviewed. Suppression is OK here.")]
-        internal class DIC_MyFirstDictionaryValidateInformationForm : Nat.Web.Controls.ExtNet.Validators.ValidateInformationForm
+        internal class DIC_MySecondDictionaryValidateInformationForm : Nat.Web.Controls.ExtNet.Validators.ValidateInformationForm
         {
-            private ValidateInformation _Code;
             private ValidateInformation _Name;
-            private ValidateInformation _DateStart;
-            private ValidateInformation _DateEnd;
+            private ValidateInformation _refFirstDictionary;
+            private ValidateInformation _DecimalValue;
+            private ValidateInformation _BoolValue;
     
-            public DIC_MyFirstDictionaryValidateInformationForm(Control form)
+            public DIC_MySecondDictionaryValidateInformationForm(Control form)
                 : base(form)
             {
             }
     
-            public ValidateInformation Code
-            {
-                get
-                {
-                    if (_Code == null)
-                    {
-                        _Code = new ValidateInformation();
-                        Validators["Code"] = _Code;
-                    }
-            
-                    return _Code;
-                }
-            }
-            
             public ValidateInformation Name
             {
                 get
@@ -1728,80 +1744,100 @@ namespace SampleDictionaries
                 }
             }
             
-            public ValidateInformation DateStart
+            public ValidateInformation refFirstDictionary
             {
                 get
                 {
-                    if (_DateStart == null)
+                    if (_refFirstDictionary == null)
                     {
-                        _DateStart = new ValidateInformation();
-                        Validators["DateStart"] = _DateStart;
+                        _refFirstDictionary = new ValidateInformation();
+                        Validators["refFirstDictionary"] = _refFirstDictionary;
                     }
             
-                    return _DateStart;
+                    return _refFirstDictionary;
                 }
             }
             
-            public ValidateInformation DateEnd
+            public ValidateInformation DecimalValue
             {
                 get
                 {
-                    if (_DateEnd == null)
+                    if (_DecimalValue == null)
                     {
-                        _DateEnd = new ValidateInformation();
-                        Validators["DateEnd"] = _DateEnd;
+                        _DecimalValue = new ValidateInformation();
+                        Validators["DecimalValue"] = _DecimalValue;
                     }
             
-                    return _DateEnd;
+                    return _DecimalValue;
+                }
+            }
+            
+            public ValidateInformation BoolValue
+            {
+                get
+                {
+                    if (_BoolValue == null)
+                    {
+                        _BoolValue = new ValidateInformation();
+                        Validators["BoolValue"] = _BoolValue;
+                    }
+            
+                    return _BoolValue;
                 }
             }
     
-            public void AddDefaultValidatorsForCode(DIC_MyFirstDictionaryEdit.ControlInfo info)
-            {
-                Code.RequiredValidatorPropertieses.Add(new RequiredValidatorProperties { InitialValue = "" });
-                if (Validators.ContainsKey("Code"))
-                {
-                    var validator = Code.RequiredValidatorPropertieses.FirstOrDefault();
-                    if (validator != null && string.IsNullOrEmpty(validator.ErrorMessageInSummary))
-                        validator.ErrorMessageInSummary = DIC_MyFirstDictionaryEdit.GetRequiredMessage_Code();
-                    if (validator != null && validator.InitialValue == null)
-                        validator.InitialValue = "";
-                }
-            }
-            
-            public void AddDefaultValidatorsForName(DIC_MyFirstDictionaryEdit.ControlInfo info)
+            public void AddDefaultValidatorsForName(DIC_MySecondDictionaryEdit.ControlInfo info)
             {
                 Name.RequiredValidatorPropertieses.Add(new RequiredValidatorProperties { InitialValue = "" });
                 if (Validators.ContainsKey("Name"))
                 {
                     var validator = Name.RequiredValidatorPropertieses.FirstOrDefault();
                     if (validator != null && string.IsNullOrEmpty(validator.ErrorMessageInSummary))
-                        validator.ErrorMessageInSummary = DIC_MyFirstDictionaryEdit.GetRequiredMessage_Name();
+                        validator.ErrorMessageInSummary = DIC_MySecondDictionaryEdit.GetRequiredMessage_Name();
                     if (validator != null && validator.InitialValue == null)
                         validator.InitialValue = "";
                 }
             }
             
-            public void AddDefaultValidatorsForDateStart(DIC_MyFirstDictionaryEdit.ControlInfo info)
+            public void AddDefaultValidatorsForrefFirstDictionary(DIC_MySecondDictionaryEdit.ControlInfo info)
             {
-                DateStart.RequiredValidatorPropertieses.Add(new RequiredValidatorProperties { InitialValue = "" });
-                if (Validators.ContainsKey("DateStart"))
+                refFirstDictionary.RequiredValidatorPropertieses.Add(new RequiredValidatorProperties { InitialValue = "" });
+                if (Validators.ContainsKey("refFirstDictionary"))
                 {
-                    var validator = DateStart.RequiredValidatorPropertieses.FirstOrDefault();
+                    var validator = refFirstDictionary.RequiredValidatorPropertieses.FirstOrDefault();
                     if (validator != null && string.IsNullOrEmpty(validator.ErrorMessageInSummary))
-                        validator.ErrorMessageInSummary = DIC_MyFirstDictionaryEdit.GetRequiredMessage_DateStart();
+                        validator.ErrorMessageInSummary = DIC_MySecondDictionaryEdit.GetRequiredMessage_refFirstDictionary();
                     if (validator != null && validator.InitialValue == null)
                         validator.InitialValue = "";
                 }
             }
             
-            public void AddDefaultValidatorsForDateEnd(DIC_MyFirstDictionaryEdit.ControlInfo info)
+            public void AddDefaultValidatorsForDecimalValue(DIC_MySecondDictionaryEdit.ControlInfo info)
             {
-                if (Validators.ContainsKey("DateEnd"))
+                DecimalValue.RegexValidatorPropertieses.Add(
+                    new RegexValidatorProperties 
+                        {
+                            ErrorMessage = Nat.Web.Controls.Properties.Resources.SNotCorrectNumber,
+                            ErrorMessageInSummary = DIC_MySecondDictionaryEdit.GetNotCorrectNumberMessage_DecimalValue(),
+                            RegularExpression = @"\-?\d{0,8}((\.|,)\d{0,2})?",
+                        });
+                if (Validators.ContainsKey("DecimalValue"))
                 {
-                    var validator = DateEnd.RequiredValidatorPropertieses.FirstOrDefault();
+                    var validator = DecimalValue.RequiredValidatorPropertieses.FirstOrDefault();
                     if (validator != null && string.IsNullOrEmpty(validator.ErrorMessageInSummary))
-                        validator.ErrorMessageInSummary = DIC_MyFirstDictionaryEdit.GetRequiredMessage_DateEnd();
+                        validator.ErrorMessageInSummary = DIC_MySecondDictionaryEdit.GetRequiredMessage_DecimalValue();
+                    if (validator != null && validator.InitialValue == null)
+                        validator.InitialValue = "";
+                }
+            }
+            
+            public void AddDefaultValidatorsForBoolValue(DIC_MySecondDictionaryEdit.ControlInfo info)
+            {
+                if (Validators.ContainsKey("BoolValue"))
+                {
+                    var validator = BoolValue.RequiredValidatorPropertieses.FirstOrDefault();
+                    if (validator != null && string.IsNullOrEmpty(validator.ErrorMessageInSummary))
+                        validator.ErrorMessageInSummary = DIC_MySecondDictionaryEdit.GetRequiredMessage_BoolValue();
                     if (validator != null && validator.InitialValue == null)
                         validator.InitialValue = "";
                 }
@@ -1813,7 +1849,7 @@ namespace SampleDictionaries
 
     #region TableRowsConsts
 
-    public static class DIC_MyFirstDictionaryRowsConsts
+    public static class DIC_MySecondDictionaryRowsConsts
     {
     
     }
@@ -1822,17 +1858,30 @@ namespace SampleDictionaries
 
     #region NavigatorControl
 
-    public partial class DIC_MyFirstDictionaryNavigatorControl : BaseNavigatorControl<DIC_MyFirstDictionaryNavigatorValues>
+    public partial class DIC_MySecondDictionaryNavigatorControl : BaseNavigatorControl<DIC_MySecondDictionaryNavigatorValues>
     {
-        public override Type NavigatorType { get { return typeof(DIC_MyFirstDictionaryNavigatorInfo); } }
+        public override Type NavigatorType { get { return typeof(DIC_MySecondDictionaryNavigatorInfo); } }
     }
 
     #endregion
 
     #region NavigatorValues
 
-    public partial class DIC_MyFirstDictionaryNavigatorValues : BaseNavigatorValues
+    public partial class DIC_MySecondDictionaryNavigatorValues : BaseNavigatorValues
     {
+        public long? DIC_MySecondDictionary
+        {
+            get
+            {
+                if (!Values.ContainsKey(typeof(DIC_MySecondDictionary))) return null;
+                return (long?)Values[typeof(DIC_MySecondDictionary)];
+            }
+            set
+            {
+                Values[typeof(DIC_MySecondDictionary)] = value;
+            }
+        }
+        
         public long? DIC_MyFirstDictionary
         {
             get
@@ -1846,19 +1895,19 @@ namespace SampleDictionaries
             }
         }
     
-        protected override string TableName { get { return "DIC_MyFirstDictionary"; } }
+        protected override string TableName { get { return "DIC_MySecondDictionary"; } }
     }
 
     #endregion
 
     #region NavigatorInfoAllClasses
 
-    public partial class DIC_MyFirstDictionaryNavigatorInfo : BaseNavigatorInfo
+    public partial class DIC_MySecondDictionaryNavigatorInfo : BaseNavigatorInfo
     {
-        public override Type TableType { get { return typeof(DIC_MyFirstDictionary); } }
-        public override Type DataSourceViewType { get { return typeof(DIC_MyFirstDictionaryJournalDataSourceView); } }
-        public override string TableName { get { return "DIC_MyFirstDictionary"; } }
-        public override string Header { get { return DIC_MyFirstDictionaryResources.Header; } }
+        public override Type TableType { get { return typeof(DIC_MySecondDictionary); } }
+        public override Type DataSourceViewType { get { return typeof(DIC_MySecondDictionaryJournalDataSourceView); } }
+        public override string TableName { get { return "DIC_MySecondDictionary"; } }
+        public override string Header { get { return DIC_MySecondDictionaryResources.Header; } }
         public override string HeaderToChilds { get { return ""; } }
         public override string HeaderToParent { get { return ""; } }
         public override string ReferenceName { get { return ""; } }
@@ -1867,16 +1916,24 @@ namespace SampleDictionaries
         {
             BaseInitialize();
             
+            ParentNavigators.Add(GetNavigator(typeof(FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionaryNavigatorInfo)));
         }
         
         
+    }
+    
+    public partial class FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionaryNavigatorInfo : DIC_MyFirstDictionaryNavigatorInfo
+    {
+        public override string HeaderToChilds { get { return DIC_MyFirstDictionaryResources.FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionary_ToChildsHeader; } }
+        public override string HeaderToParent { get { return DIC_MyFirstDictionaryResources.FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionary_ToParentHeader; } }
+        public override string ReferenceName { get { return "DIC_MyFirstDictionary_refFirstDictionary"; } }
     }
 
     #endregion
 
     #region ViewModeClass
 
-    public enum ViewModeDIC_MyFirstDictionary
+    public enum ViewModeDIC_MySecondDictionary
     {
         none,
     }
@@ -1903,35 +1960,72 @@ namespace SampleDictionaries
 
     #region GetCacheNamesClass
 
-    public static class DIC_MyFirstDictionaryCacheNames
+    public static class DIC_MySecondDictionaryCacheNames
     {
+        public static string Get_refFirstDictionary(DataContext db, long? rowValue)
+        {
+            return CacheQueries.GetNameCached<DIC_MyFirstDictionary, long?, string>(
+                       db, rowValue, (r, id) => r.id == id,
+                       r => r.Name,
+                       new ExpressionCulture<Func<DIC_MyFirstDictionary, string>>("kk-kz", r => r.Name));
+        }
+    
+        public static string Get_refFirstDictionary(DataContext db, DIC_MySecondDictionary row)
+        {
+            long? rowValue;
+            rowValue = row.refFirstDictionary;
+    
+            return Get_refFirstDictionary(db, rowValue);
+        }
+    
+        public static string GetByTime_refFirstDictionary(DataContext db, long? rowValue)
+        {
+            return CacheQueries.GetNameCached<DIC_MyFirstDictionary, long?, string>(
+                       DateTime.Now.AddSeconds(20), Cache.NoSlidingExpiration, CacheItemPriority.BelowNormal,
+                       db, rowValue, (r, id) => r.id == id,
+                       r => r.Name,
+                       new ExpressionCulture<Func<DIC_MyFirstDictionary, string>>("kk-kz", r => r.Name));
+        }
+    
+        public static string GetByTime_refFirstDictionary(DataContext db, DIC_MySecondDictionary row)
+        {
+            long? rowValue;
+            rowValue = row.refFirstDictionary;
+    
+            return GetByTime_refFirstDictionary(db, rowValue);
+        }
+    
+        public static string GetRu_refFirstDictionary(DataContext db, long? rowValue)
+        {
+            return CacheQueries.GetNameCached<DIC_MyFirstDictionary, long?, string>(db, rowValue, (r, id) => r.id == id, r => r.Name);
+        }
     
         public static string GetNameRu(DataContext db, long? rowValue)
         {
-            return CacheQueries.GetNameCached<DIC_MyFirstDictionary, long?, string>(
+            return CacheQueries.GetNameCached<DIC_MySecondDictionary, long?, string>(
                         db, rowValue, (r, id) => r.id == id, r => r.Name);
         }
     
         public static string GetName(DataContext db, long? rowValue)
         {
-            return CacheQueries.GetNameCached<DIC_MyFirstDictionary, long?, string>(
+            return CacheQueries.GetNameCached<DIC_MySecondDictionary, long?, string>(
                         db, 
                         rowValue, 
                         (r, id) => r.id == id, 
                         r => r.Name, 
-                        new ExpressionCulture<Func<DIC_MyFirstDictionary, string>>("kk-kz", r => r.Name));
+                        new ExpressionCulture<Func<DIC_MySecondDictionary, string>>("kk-kz", r => r.Name));
         }
         
         public static void ClearCache(DataContext db, long? rowValue)
         {
             if (rowValue == null)
                 return;
-            CacheQueries.ClearCache<DIC_MyFirstDictionary, long?, string>(
+            CacheQueries.ClearCache<DIC_MySecondDictionary, long?, string>(
                 db,
                 rowValue.Value, 
                 (r, id) => r.id == id, 
                 r => r.Name, 
-                new ExpressionCulture<Func<DIC_MyFirstDictionary, string>>("kk-kz", r => r.Name));
+                new ExpressionCulture<Func<DIC_MySecondDictionary, string>>("kk-kz", r => r.Name));
         }
     }
 

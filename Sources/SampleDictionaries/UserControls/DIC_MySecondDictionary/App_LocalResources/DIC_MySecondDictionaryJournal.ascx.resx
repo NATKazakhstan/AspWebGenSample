@@ -117,106 +117,76 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Header" xml:space="preserve">
-    <value>My First Dictionary</value>
-  </data>
-  <data name="ProjectHeader" xml:space="preserve">
-    <value>SampleDictionaries</value>
-  </data>
-  <data name="LookMessage" xml:space="preserve">
-    <value>Просмотр</value>
-  </data>
-  <data name="EditMessage" xml:space="preserve">
-    <value>Редактировать</value>
-  </data>
-  <data name="DeleteMessage" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="DeleteQuestionMessage" xml:space="preserve">
-    <value>Вы действительно хотите удалить?</value>
-  </data>
-  <data name="id__Header" xml:space="preserve">
-    <value>Identifier</value>
-  </data>
-  <data name="id__ShortName" xml:space="preserve">
-    <value />
-  </data>
-  <data name="id__Group" xml:space="preserve">
-    <value />
-  </data>
-  <data name="id__GridGroup" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Code__Header" xml:space="preserve">
-    <value>System code</value>
-  </data>
-  <data name="Code__ShortName" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Code__Group" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Code__GridGroup" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Name__Header" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="Name__ShortName" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Name__Group" xml:space="preserve">
-    <value />
-  </data>
-  <data name="Name__GridGroup" xml:space="preserve">
-    <value />
-  </data>
-  <data name="DateStart__Header" xml:space="preserve">
-    <value>Date time Start</value>
-  </data>
-  <data name="DateStart__ShortName" xml:space="preserve">
-    <value />
-  </data>
-  <data name="DateStart__Group" xml:space="preserve">
-    <value />
-  </data>
-  <data name="DateStart__GridGroup" xml:space="preserve">
-    <value />
-  </data>
-  <data name="DateEnd__Header" xml:space="preserve">
-    <value>Date time End</value>
-  </data>
-  <data name="DateEnd__ShortName" xml:space="preserve">
-    <value />
-  </data>
-  <data name="DateEnd__Group" xml:space="preserve">
-    <value />
-  </data>
-  <data name="DateEnd__GridGroup" xml:space="preserve">
-    <value />
-  </data>
-  <data name="RowVersion__Header" xml:space="preserve">
-    <value>timestamp</value>
-  </data>
-  <data name="RowVersion__ShortName" xml:space="preserve">
-    <value />
-  </data>
-  <data name="RowVersion__Group" xml:space="preserve">
-    <value />
-  </data>
-  <data name="RowVersion__GridGroup" xml:space="preserve">
-    <value />
-  </data>
-  <data name="FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionary_ToChildsHeader" xml:space="preserve">
+  <data name="panel.Title" xml:space="preserve">
     <value>My Second Dictionary</value>
   </data>
-  <data name="FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionary_ToParentHeader" xml:space="preserve">
-    <value>My First Dictionary</value>
+  <data name="gridView.EmptyText" xml:space="preserve">
+    <value>Нет данных для отображения в журнале.</value>
   </data>
-  <data name="FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionary_Group" xml:space="preserve">
-    <value />
+  <data name="gridView.LoadingText" xml:space="preserve">
+    <value>Загрузка...</value>
   </data>
-  <data name="FK_DIC_MySecondDictionary_DIC_MyFirstDictionary_refFirstDictionary_FilterGroup" xml:space="preserve">
-    <value />
+  <data name="gridFilter.MenuFilterText" xml:space="preserve">
+    <value>Фильтр</value>
+  </data>
+  <data name="pagingToolBar.EmptyMsg" xml:space="preserve">
+    <value>Нет данных для отображения в журнале</value>
+  </data>
+  <data name="pagingToolBar.DisplayMsg" xml:space="preserve">
+    <value>Отображены строки с {0} по {1} из {2}</value>
+  </data>
+  <data name="pagingToolBar.BeforePageText" xml:space="preserve">
+    <value>Страница</value>
+  </data>
+  <data name="pagingToolBar.AfterPageText" xml:space="preserve">
+    <value>из {0}</value>
+  </data>
+  <data name="pagingToolBar.RefreshText" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="pagingToolBar.FirstText" xml:space="preserve">
+    <value>Первая страница</value>
+  </data>
+  <data name="pagingToolBar.LastText" xml:space="preserve">
+    <value>Последняя страница</value>
+  </data>
+  <data name="pagingToolBar.NextText" xml:space="preserve">
+    <value>Следующая страница</value>
+  </data>
+  <data name="pagingToolBar.PrevText" xml:space="preserve">
+    <value>Предыдущая страница</value>
+  </data>
+  <data name="AddButton.ToolTip" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="DeleteSelectedButton.ToolTip" xml:space="preserve">
+    <value>Удалить выбранные строки</value>
+  </data>
+  <data name="DeleteSelectedButton.DirectEvents.Click.Confirmation.Message" xml:space="preserve">
+    <value>Удалить выбранные строки?</value>
+  </data>
+  <data name="ShowHistoryButton.ToolTip" xml:space="preserve">
+    <value>Показать/скрыть историю</value>
+  </data>
+  <data name="SaveButton.ToolTip" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="ExportToExcelButton.ToolTip" xml:space="preserve">
+    <value>Экспортировать в Excel</value>
+  </data>
+  <data name="Loader.LoadMask.Msg" xml:space="preserve">
+    <value>Загрузка...</value>
+  </data>
+  <data name="SearchText.EmptyText" xml:space="preserve">
+    <value>Быстрый поиск</value>
+  </data>
+  <data name="SelectionOK.ToolTip" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="SelectionCancel.ToolTip" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="DeleteSelectedButton.DirectEvents.Click.Confirmation.Title" xml:space="preserve">
+    <value>Удалить</value>
   </data>
 </root>
