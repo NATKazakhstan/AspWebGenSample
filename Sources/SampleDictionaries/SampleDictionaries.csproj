@@ -158,6 +158,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Default3.aspx" />
     <Content Include="Default2.aspx" />
     <Content Include="EmptyPage.aspx" />
     <Content Include="Ext.NET.Default.aspx" />
@@ -214,6 +215,12 @@
     <Content Include="UserControls\DIC_MySecondDictionary\DIC_MySecondDictionaryEdit.ascx" />
     <Content Include="UserControls\DIC_MySecondDictionary\DIC_MySecondDictionaryFilter.ascx" />
     <Content Include="UserControls\DIC_MySecondDictionary\DIC_MySecondDictionaryJournal.ascx" />
+    <Content Include="UserControls\MyProductActions\MyProductActionsEdit.ascx" />
+    <Content Include="UserControls\MyProductActions\MyProductActionsFilter.ascx" />
+    <Content Include="UserControls\MyProductActions\MyProductActionsJournal.ascx" />
+    <Content Include="UserControls\MyProducts\MyProductsEdit.ascx" />
+    <Content Include="UserControls\MyProducts\MyProductsFilter.ascx" />
+    <Content Include="UserControls\MyProducts\MyProductsJournal.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -256,16 +263,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logic\MyProductsEdit.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logic\MyProductsJournal.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\TableResources.Designer.cs" />
     <Compile Include="Security\SampleDictionariesRight.cs" />
-    <Compile Include="IFrameSite.Master.cs">
-      <DependentUpon>IFrameSite.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="IFrameSite.Master.designer.cs">
-      <DependentUpon>IFrameSite.Master</DependentUpon>
-    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -326,6 +332,52 @@
       <DependentUpon>DIC_MySecondDictionaryJournal.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\DIC_MySecondDictionary\Resources.Designer.cs" />
+    <Compile Include="UserControls\MyProductActions\MyProductActions.cs" />
+    <Compile Include="UserControls\MyProductActions\MyProductActionsEdit.ascx.cs">
+      <DependentUpon>MyProductActionsEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\MyProductActions\MyProductActionsEdit.ascx.designer.cs">
+      <DependentUpon>MyProductActionsEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MyProductActions\MyProductActionsFilter.ascx.cs">
+      <DependentUpon>MyProductActionsFilter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\MyProductActions\MyProductActionsFilter.ascx.designer.cs">
+      <DependentUpon>MyProductActionsFilter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MyProductActions\MyProductActionsJournal.ascx.cs">
+      <DependentUpon>MyProductActionsJournal.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\MyProductActions\MyProductActionsJournal.ascx.designer.cs">
+      <DependentUpon>MyProductActionsJournal.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MyProductActions\Resources.Designer.cs" />
+    <Compile Include="UserControls\MyProducts\MyProducts.cs" />
+    <Compile Include="UserControls\MyProducts\MyProductsEdit.ascx.cs">
+      <DependentUpon>MyProductsEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\MyProducts\MyProductsEdit.ascx.designer.cs">
+      <DependentUpon>MyProductsEdit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MyProducts\MyProductsFilter.ascx.cs">
+      <DependentUpon>MyProductsFilter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\MyProducts\MyProductsFilter.ascx.designer.cs">
+      <DependentUpon>MyProductsFilter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MyProducts\MyProductsJournal.ascx.cs">
+      <DependentUpon>MyProductsJournal.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\MyProducts\MyProductsJournal.ascx.designer.cs">
+      <DependentUpon>MyProductsJournal.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MyProducts\Resources.Designer.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -343,6 +395,8 @@
     <Content Include="UserControls\DIC_MyFirstDictionary\DIC_MyFirstDictionary.sdbml" />
     <Content Include="IFrameSite.Master" />
     <Content Include="UserControls\DIC_MySecondDictionary\DIC_MySecondDictionary.sdbml" />
+    <Content Include="UserControls\MyProductActions\MyProductActions.sdbml" />
+    <Content Include="UserControls\MyProducts\MyProducts.sdbml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -362,6 +416,12 @@
     <Content Include="UserControls\DIC_MySecondDictionary\App_LocalResources\DIC_MySecondDictionaryEdit.ascx.resx" />
     <Content Include="UserControls\DIC_MySecondDictionary\App_LocalResources\DIC_MySecondDictionaryJournal.ascx.resx" />
     <EmbeddedResource Include="UserControls\DIC_MySecondDictionary\Resources.resx" />
+    <Content Include="UserControls\MyProductActions\App_LocalResources\MyProductActionsEdit.ascx.resx" />
+    <Content Include="UserControls\MyProductActions\App_LocalResources\MyProductActionsJournal.ascx.resx" />
+    <EmbeddedResource Include="UserControls\MyProductActions\Resources.resx" />
+    <Content Include="UserControls\MyProducts\App_LocalResources\MyProductsEdit.ascx.resx" />
+    <Content Include="UserControls\MyProducts\App_LocalResources\MyProductsJournal.ascx.resx" />
+    <EmbeddedResource Include="UserControls\MyProducts\Resources.resx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\AspWebGen\JS.Linq.Extensions\JS.Linq.Extensions.csproj">

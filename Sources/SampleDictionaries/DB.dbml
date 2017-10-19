@@ -23,4 +23,26 @@
       <Column Name="RowVersion" Type="System.Data.Linq.Binary" DbType="timestamp" CanBeNull="true" IsDbGenerated="true" />
     </Type>
   </Table>
+  <Table Name="dbo.MyProducts" Member="MyProducts">
+    <Type Name="MyProduct">
+      <Column Name="id" Type="System.Int64" DbType="bigint" CanBeNull="false" IsDbGenerated="true" IsPrimaryKey="true" />
+      <Column Name="Name" Type="System.String" DbType="nvarchar(200)" CanBeNull="false" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="date" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="decimal(7,2)" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="decimal(7,2)" CanBeNull="false" />
+      <Column Name="RowVersion" Type="System.Data.Linq.Binary" DbType="timestamp" CanBeNull="true" IsDbGenerated="true" />
+      <Association Name="MyProducts_MyProductActions_refProduct" ThisKey="id" OtherKey="refProduct" Type="MyProductAction" Member="MyProductActions_refProduct" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MyProductActions" Member="MyProductActions">
+    <Type Name="MyProductAction">
+      <Column Name="id" Type="System.Int64" DbType="bigint" CanBeNull="false" IsPrimaryKey="true" />
+      <Column Name="refProduct" Type="System.Int64" DbType="bigint" CanBeNull="false" />
+      <Column Name="DateTimeAction" Type="System.DateTime" DbType="datetime" CanBeNull="false" />
+      <Column Name="AmountChange" Type="System.Decimal" DbType="decimal(7,2)" CanBeNull="false" />
+      <Column Name="Note" Type="System.String" DbType="nvarchar(500)" CanBeNull="true" />
+      <Association Name="MyProducts_MyProductActions_refProduct" ThisKey="refProduct" OtherKey="id" Type="MyProduct" IsForeignKey="true" Member="MyProduct_refProduct" />
+      <Column Name="RowVersion" Type="System.Data.Linq.Binary" DbType="timestamp" CanBeNull="true" IsDbGenerated="true" />
+    </Type>
+  </Table>
 </Database>

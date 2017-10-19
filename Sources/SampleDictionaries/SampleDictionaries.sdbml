@@ -101,7 +101,7 @@
       <Mandatory>true</Mandatory>
       <MustHave>true</MustHave>
       <ComputeInDataBase>true</ComputeInDataBase>
-      <Identity>false</Identity>
+      <Identity>true</Identity>
     </SyncColumn>
     <SyncColumn>
       <TableName>DIC_MySecondDictionary</TableName>
@@ -173,6 +173,183 @@
       <ChildTableType>DIC_MySecondDictionary</ChildTableType>
       <ParentTableCollection>DIC_MyFirstDictionaries</ParentTableCollection>
       <ChildTableCollection>DIC_MySecondDictionaries</ChildTableCollection>
+      <MustHave>true</MustHave>
+      <NotCreateRefToChilds>false</NotCreateRefToChilds>
+    </SyncAssociation>
+    
+    <SyncTable>
+       <TableName>MyProducts</TableName>
+       <Description>Мои товары</Description>
+       <TypeName>MyProduct</TypeName>
+       <CollectionName>MyProducts</CollectionName>
+       <Columns>id,Name,CreationDate,Price,Amount,RowVersion</Columns>
+       <PrimaryKeys>id</PrimaryKeys>
+       <MustHave>true</MustHave>
+    </SyncTable>
+    <SyncColumn>
+      <TableName>MyProducts</TableName>
+      <ColumnName>id</ColumnName>
+      <Description>Идентификатор</Description>
+      <DataType>System.Int64</DataType>
+      <DbType>bigint</DbType>
+      <Mandatory>true</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>true</ComputeInDataBase>
+      <Identity>true</Identity>
+    </SyncColumn>
+    <SyncColumn>
+      <TableName>MyProducts</TableName>
+      <ColumnName>Name</ColumnName>
+      <Description>Наименование</Description>
+      <DataType>System.String</DataType>
+      <DbType>nvarchar(200)</DbType>
+      <Mandatory>true</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>false</ComputeInDataBase>
+      <Identity>false</Identity>
+      <MaxLength>200</MaxLength>
+      <Unicode>true</Unicode>
+    </SyncColumn>
+    <SyncColumn>
+      <TableName>MyProducts</TableName>
+      <ColumnName>CreationDate</ColumnName>
+      <Description>Дата создания</Description>
+      <DataType>System.DateTime</DataType>
+      <DbType>date</DbType>
+      <Mandatory>true</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>false</ComputeInDataBase>
+      <Identity>false</Identity>
+    </SyncColumn>
+    <SyncColumn>
+      <TableName>MyProducts</TableName>
+      <ColumnName>Price</ColumnName>
+      <Description>Цена</Description>
+      <DataType>System.Decimal</DataType>
+      <DbType>decimal(7,2)</DbType>
+      <Mandatory>true</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>false</ComputeInDataBase>
+      <Identity>false</Identity>
+      <MaxLength>7</MaxLength>
+      <Precision>2</Precision>
+    </SyncColumn>
+    <SyncColumn>
+      <TableName>MyProducts</TableName>
+      <ColumnName>Amount</ColumnName>
+      <Description>Доступно</Description>
+      <DataType>System.Decimal</DataType>
+      <DbType>decimal(7,2)</DbType>
+      <Mandatory>true</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>false</ComputeInDataBase>
+      <Identity>false</Identity>
+      <MaxLength>7</MaxLength>
+      <Precision>2</Precision>
+    </SyncColumn>
+    <SyncColumn>
+      <TableName>MyProducts</TableName>
+      <ColumnName>RowVersion</ColumnName>
+      <Description></Description>
+      <DataType>System.Data.Linq.Binary</DataType>
+      <DbType>timestamp</DbType>
+      <Mandatory>false</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>true</ComputeInDataBase>
+      <Identity>false</Identity>
+    </SyncColumn>
+    
+    
+    <SyncTable>
+       <TableName>MyProductActions</TableName>
+       <Description>Поступления/продажи товаров</Description>
+       <TypeName>MyProductAction</TypeName>
+       <CollectionName>MyProductActions</CollectionName>
+       <Columns>id,refProduct,DateTimeAction,AmountChange,Note,RowVersion</Columns>
+       <PrimaryKeys>id</PrimaryKeys>
+       <MustHave>true</MustHave>
+    </SyncTable>
+    <SyncColumn>
+      <TableName>MyProductActions</TableName>
+      <ColumnName>id</ColumnName>
+      <Description>Идентификатор</Description>
+      <DataType>System.Int64</DataType>
+      <DbType>bigint</DbType>
+      <Mandatory>true</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>false</ComputeInDataBase>
+      <Identity>false</Identity>
+    </SyncColumn>
+    <SyncColumn>
+      <TableName>MyProductActions</TableName>
+      <ColumnName>refProduct</ColumnName>
+      <Description>Мой товар</Description>
+      <DataType>System.Int64</DataType>
+      <DbType>bigint</DbType>
+      <Mandatory>true</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>false</ComputeInDataBase>
+      <Identity>false</Identity>
+    </SyncColumn>
+    <SyncColumn>
+      <TableName>MyProductActions</TableName>
+      <ColumnName>DateTimeAction</ColumnName>
+      <Description>Дата/время действия</Description>
+      <DataType>System.DateTime</DataType>
+      <DbType>datetime</DbType>
+      <Mandatory>true</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>false</ComputeInDataBase>
+      <Identity>false</Identity>
+    </SyncColumn>
+    <SyncColumn>
+      <TableName>MyProductActions</TableName>
+      <ColumnName>AmountChange</ColumnName>
+      <Description>Изменение кол-ва</Description>
+      <DataType>System.Decimal</DataType>
+      <DbType>decimal(7,2)</DbType>
+      <Mandatory>true</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>false</ComputeInDataBase>
+      <Identity>false</Identity>
+      <MaxLength>7</MaxLength>
+      <Precision>2</Precision>
+    </SyncColumn>
+    <SyncColumn>
+      <TableName>MyProductActions</TableName>
+      <ColumnName>Note</ColumnName>
+      <Description>Примечание</Description>
+      <DataType>System.String</DataType>
+      <DbType>nvarchar(500)</DbType>
+      <Mandatory>false</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>false</ComputeInDataBase>
+      <Identity>false</Identity>
+      <MaxLength>500</MaxLength>
+      <Unicode>true</Unicode>
+    </SyncColumn>
+    <SyncColumn>
+      <TableName>MyProductActions</TableName>
+      <ColumnName>RowVersion</ColumnName>
+      <Description></Description>
+      <DataType>System.Data.Linq.Binary</DataType>
+      <DbType>timestamp</DbType>
+      <Mandatory>false</Mandatory>
+      <MustHave>true</MustHave>
+      <ComputeInDataBase>true</ComputeInDataBase>
+      <Identity>false</Identity>
+    </SyncColumn>
+    <SyncAssociation>
+      <IsOneToOne>false</IsOneToOne>
+      <AssociationName>MyProducts_MyProductActions_refProduct</AssociationName>
+      <ParentTableColumn>id</ParentTableColumn>
+      <ChildTableColumn>refProduct</ChildTableColumn>
+      <ParentTable>MyProducts</ParentTable>
+      <ChildTable>MyProductActions</ChildTable>
+      <ParentTableType>MyProduct</ParentTableType>
+      <ChildTableType>MyProductAction</ChildTableType>
+      <ParentTableCollection>MyProducts</ParentTableCollection>
+      <ChildTableCollection>MyProductActions</ChildTableCollection>
       <MustHave>true</MustHave>
       <NotCreateRefToChilds>false</NotCreateRefToChilds>
     </SyncAssociation>

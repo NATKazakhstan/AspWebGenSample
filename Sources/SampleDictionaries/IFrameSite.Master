@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="IFrameSite.Master.cs" Inherits="SampleDictionaries.IFrameSiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" %>
 
 <!DOCTYPE html>
 

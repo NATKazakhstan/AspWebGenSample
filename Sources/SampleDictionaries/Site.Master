@@ -55,6 +55,7 @@
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">My First Dictionary</a></li>
                         <li><a runat="server" href="~/Default2">My Second Dictionary</a></li>
+                        <li><a runat="server" href="~/Default3">Мои товары</a></li>
                         <li><a runat="server" href="~/About">Информация</a></li>
                         <li><a runat="server" href="~/Contact">Связаться</a></li>
                     </ul>

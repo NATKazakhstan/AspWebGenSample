@@ -21,7 +21,7 @@
       <Mandatory>true</Mandatory>
       <MustHave>true</MustHave>
       <ComputeInDataBase>true</ComputeInDataBase>
-      <Identity>false</Identity>
+      <Identity>true</Identity>
     </SyncColumn>
     <SyncColumn>
       <TableName>DIC_MySecondDictionary</TableName>
